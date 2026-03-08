@@ -15,6 +15,7 @@
 - ✅ Testimonials/social proof section
 - ✅ FAQ accordion section
 - ✅ Dark/light mode toggle
+- ✅ Live pricing API integration
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -99,3 +100,12 @@ Document:
 - useRef to track first render prevents unnecessary class application
 - aria-label updates dynamically: "Switch to light mode" ↔ "Switch to dark mode"
 - 300ms CSS transition on body for smooth theme switch
+- Live pricing API integration extracts hardcoded data into /api/pricing endpoint
+- TypeScript interfaces (PricingModel, PricingResponse) ensure type safety across API and components
+- usePricing hook handles loading/error states with sessionStorage caching (5 min TTL)
+- Dynamic import not needed - component uses "use client" directive
+- API route returns JSON with lastUpdated timestamp for freshness display
+- Loading skeleton provides visual feedback while fetching - improves perceived performance
+- Error state includes retry button for failed API calls
+- Savings percentage calculated dynamically from competitor vs our pricing
+- Browser test confirmed all three pricing categories render correctly with data
