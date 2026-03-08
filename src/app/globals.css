@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #030712;
+  --color-foreground: #f9fafb;
+}
+
+body {
+  background: #030712;
+  color: #f9fafb;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
