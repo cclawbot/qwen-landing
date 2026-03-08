@@ -1,85 +1,87 @@
-# Feature Spec: FAQ Accordion Section
+# Feature Spec: Dark/Light Mode Toggle
 
 ## Feature Name
-FAQ Accordion - Expandable Questions & Answers
+Dark/Light Mode Toggle - Theme Switcher
 
 ## Business Requirement
-Add an interactive FAQ section to the landing page that addresses common customer questions about pricing, API usage, and enterprise features. Accordion style keeps the page clean while allowing users to find answers quickly.
+Add a theme toggle button in the navigation header that allows users to switch between dark mode (default) and light mode. The preference should persist across sessions using localStorage.
 
 ## Business Goal Alignment
-- **Primary Goal**: Reduce support burden by answering common questions upfront
-- **Secondary Goal**: Build trust by demonstrating transparency about pricing and capabilities
-- **Success Metric**: Visitors who engage with FAQ sections have higher conversion rates
+- **Primary Goal**: Improve user experience by offering theme preference
+- **Secondary Goal**: Modern, polished look that adapts to system preferences
+- **Success Metric**: Users who engage with theme toggle have longer session times
 
 ## In-Scope
-- Display 5-6 frequently asked questions about QwenResell API
-- Click-to-expand accordion interaction (one open at a time)
-- Questions cover: pricing, getting started, enterprise features, volume discounts, support
-- Smooth expand/collapse animation
-- Dark theme matching existing site styling
-- Mobile-responsive (full-width on mobile)
+- Toggle button in navigation header (sun/moon icons)
+- Smooth transition between themes
+- Persist preference in localStorage
+- Respect system preference on first visit (prefers-color-scheme)
+- Light mode with proper contrast and readability
+- Mobile-responsive (same toggle works on all screen sizes)
 
 ## Out-of-Scope
-- Search functionality within FAQ
-- Multiple accordions open at once
-- Nested accordions
-- Dynamic/CMS-driven FAQ content
-- FAQ categories/tabs
+- Color scheme customization beyond dark/light
+- OS-level theme sync after initial load
+- Server-side rendering of theme (client-only is fine)
 
 ## Technical Details
 
 ### Component Structure
-- New component: `FAQ.tsx` in `src/components/`
-- Section added to `page.tsx` after Testimonials section, before Contact Form
-- Uses React state to track open/closed state
+- New component: `ThemeToggle.tsx` in `src/components/`
+- Uses React context or local state for theme management
+- "use client" directive required for interactivity
 
-### Data Model
-```typescript
-interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
-}
-```
+### State Management
+- Store theme in localStorage key: "theme" (value: "dark" | "light")
+- Check system preference as fallback: window.matchMedia("(prefers-color-scheme: light)")
 
-### FAQ Content
-1. **How much can I save with QwenResell?** - Pricing comparison details
-2. **How do I get started?** - API key signup process
-3. **What volume discounts do you offer?** - Enterprise pricing tiers
-4. **Is there a free tier?** - Free tier details
-5. **What enterprise features are available?** - SLA, support, custom contracts
-6. **How is the API different from direct Alibaba Cloud?** - Reseller benefits
+### Styling Approach
+- Use Tailwind's `dark:` variant with class-based dark mode
+- Configure Tailwind for class-based dark mode in globals.css
+- Light mode: bg-gray-50, text-gray-900 for main content areas
+- Smooth 300ms transition on background-color and color
 
-### Styling
-- Dark card backgrounds with subtle borders
-- Question row: clickable, cursor pointer, hover highlight
-- Plus/minus icon indicator (rotates on open)
-- Answer text with smooth height transition
-- Match existing dark theme: bg-[#030712], gray-400/500 text
+### Dark Mode (Default)
+- bg-[#030712] (current dark background)
+- text-white / text-gray-300
+
+### Light Mode
+- bg-gray-50 / bg-white
+- text-gray-900 / text-gray-700
+- Adjusted card backgrounds with subtle shadows
 
 ## Implementation Plan
 
-### Step 1: Create FAQ Component
-- Create `src/components/FAQ.tsx` with "use client" directive
-- Define FAQItem interface
-- Create static FAQ array with 6 items
-- Implement accordion state with useState
-- Render expandable list with animation
+### Step 1: Configure Tailwind for Class-based Dark Mode
+- Update globals.css to enable class strategy
+- Add CSS variables for theme colors
 
-### Step 2: Add to Page
-- Import and add `<FAQ />` section in `page.tsx`
-- Place between Testimonials and Contact Form sections
+### Step 2: Create ThemeToggle Component
+- Create `src/components/ThemeToggle.tsx`
+- Implement useState for theme (default: undefined/null = system)
+- Add toggle function that switches dark/light
+- Add localStorage persistence
+- Render sun icon (light mode) / moon icon (dark mode)
 
-### Step 3: Test & Verify
+### Step 3: Add Theme Script to Layout
+- Add script to layout.tsx to prevent flash of wrong theme
+- Read localStorage or system preference before React hydrates
+
+### Step 4: Add Toggle to Navigation
+- Import ThemeToggle in page.tsx
+- Add to nav bar, right side
+
+### Step 5: Test & Verify
 - Run lint, type-check, build
 - Browser snapshot test
 
 ## Acceptance Criteria
-- [ ] FAQ section renders on the page with 6 questions
-- [ ] Clicking a question expands its answer with smooth animation
-- [ ] Only one answer open at a time (clicking another closes current)
-- [ ] Plus/minus icon rotates correctly on expand/collapse
-- [ ] Dark theme matches existing site styling
-- [ ] Mobile-responsive layout
-- [ ] No console errors
+- [ ] Toggle button appears in navigation header
+- [ ] Clicking toggle switches between dark and light mode
+- [ ] Theme persists across page refreshes (localStorage)
+- [ ] First visit respects system color scheme preference
+- [ ] No flash of unstyled content on page load
+- [ ] Light mode is readable with proper contrast
+- [ ] Smooth transition between themes (no jarring changes)
+- [ ] Mobile responsive - toggle visible on all screen sizes
 - [ ] Lint, type-check, build all pass

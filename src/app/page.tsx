@@ -4,6 +4,7 @@ import PricingCalculator from "@/components/PricingCalculator";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -12,17 +13,21 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#030712] text-white font-sans">
+    <div className="min-h-screen bg-[#030712] dark:bg-[#030712] light:bg-gray-50 text-white dark:text-white light:text-gray-900 font-sans transition-colors duration-300">
       {/* Header */}
       <nav className="container mx-auto px-6 py-8 flex justify-between items-center">
         <div className="text-2xl font-bold tracking-tighter flex items-center gap-2">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center italic text-sm">Q</div>
           QwenResell
         </div>
-        <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-          <a href="#pricing" className="hover:text-white transition">Pricing</a>
-          <a href="#features" className="hover:text-white transition">Features</a>
-          <a href="#waitlist" className="hover:text-white transition text-blue-400">Join Waitlist</a>
+        <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400 dark:text-gray-400 light:text-gray-600 items-center">
+          <a href="#pricing" className="hover:text-white dark:hover:text-white light:hover:text-gray-900 transition">Pricing</a>
+          <a href="#features" className="hover:text-white dark:hover:text-white light:hover:text-gray-900 transition">Features</a>
+          <a href="#waitlist" className="hover:text-white dark:hover:text-white light:hover:text-gray-900 transition text-blue-400">Join Waitlist</a>
+          <ThemeToggle />
+        </div>
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
         </div>
       </nav>
 

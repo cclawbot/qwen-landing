@@ -18,7 +18,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('theme');
+                  if (stored) {
+                    document.body.classList.add(stored);
+                  } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.body.classList.add('light');
+                  } else {
+                    document.body.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
