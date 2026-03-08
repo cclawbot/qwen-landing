@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import PricingCalculator from "@/components/PricingCalculator";
+import PricingSection from "@/components/PricingSection";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
@@ -53,128 +54,7 @@ export default function Home() {
       </header>
 
       {/* Pricing Section */}
-      <section id="pricing" className="container mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold mb-12 text-center">API Price Comparison (per 1M Tokens)</h2>
-        
-        <div className="space-y-16">
-          {/* Category 1 */}
-          <div>
-            <h3 className="text-blue-400 font-semibold mb-6 flex items-center gap-2">
-              <span className="w-2 h-2 bg-blue-400 rounded-full"></span> Flagship / Thinking Models
-            </h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left bg-[rgba(17,24,39,0.7)] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.1)] backdrop-blur-xl">
-                <thead>
-                  <tr className="border-b border-gray-800 text-gray-500 text-sm uppercase">
-                    <th className="px-6 py-4">Model</th>
-                    <th className="px-6 py-4 text-right">Input (USD)</th>
-                    <th className="px-6 py-4 text-right">Output (USD)</th>
-                    <th className="px-6 py-4 text-center">Status</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-300">
-                  <tr className="border-b border-gray-800/50">
-                    <td className="px-6 py-4 font-medium">GPT-5.4 Pro</td>
-                    <td className="px-6 py-4 text-right">$30.00</td>
-                    <td className="px-6 py-4 text-right">$180.00</td>
-                    <td className="px-6 py-4 text-center text-xs">Standard</td>
-                  </tr>
-                  <tr className="border-b border-gray-800/50">
-                    <td className="px-6 py-4 font-medium">Claude Opus 4.6</td>
-                    <td className="px-6 py-4 text-right">$5.00</td>
-                    <td className="px-6 py-4 text-right">$25.00</td>
-                    <td className="px-6 py-4 text-center text-xs">Standard</td>
-                  </tr>
-                  <tr className="bg-[rgba(59,130,246,0.1)] text-white border-l-4 border-blue-500">
-                    <td className="px-6 py-4 font-bold">Qwen Plus (0728)</td>
-                    <td className="px-6 py-4 text-right font-bold">$0.26 <span className="ml-2 bg-[#064e3b] text-[#34d399] text-xs px-2 py-0.5 rounded-full">-99.1%</span></td>
-                    <td className="px-6 py-4 text-right font-bold">$0.78 <span className="ml-2 bg-[#064e3b] text-[#34d399] text-xs px-2 py-0.5 rounded-full">-99.5%</span></td>
-                    <td className="px-6 py-4 text-center text-xs font-bold text-blue-400 uppercase">Available Now</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* Category 2 */}
-          <div>
-            <h3 className="text-purple-400 font-semibold mb-6 flex items-center gap-2">
-              <span className="w-2 h-2 bg-purple-400 rounded-full"></span> Standard / Mid-tier
-            </h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left bg-[rgba(17,24,39,0.7)] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.1)] backdrop-blur-xl">
-                <thead>
-                  <tr className="border-b border-gray-800 text-gray-500 text-sm uppercase">
-                    <th className="px-6 py-4">Model</th>
-                    <th className="px-6 py-4 text-right">Input (USD)</th>
-                    <th className="px-6 py-4 text-right">Output (USD)</th>
-                    <th className="px-6 py-4 text-center">Status</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-300">
-                  <tr className="border-b border-gray-800/50">
-                    <td className="px-6 py-4 font-medium">Claude Sonnet 4.6</td>
-                    <td className="px-6 py-4 text-right">$3.00</td>
-                    <td className="px-6 py-4 text-right">$15.00</td>
-                    <td className="px-6 py-4 text-center text-xs">Standard</td>
-                  </tr>
-                  <tr className="border-b border-gray-800/50">
-                    <td className="px-6 py-4 font-medium">GPT-5.1</td>
-                    <td className="px-6 py-4 text-right">$1.25</td>
-                    <td className="px-6 py-4 text-right">$10.00</td>
-                    <td className="px-6 py-4 text-center text-xs">Standard</td>
-                  </tr>
-                  <tr className="bg-[rgba(59,130,246,0.1)] text-white border-l-4 border-blue-500">
-                    <td className="px-6 py-4 font-bold">Qwen Turbo</td>
-                    <td className="px-6 py-4 text-right font-bold">$0.30 <span className="ml-2 bg-[#064e3b] text-[#34d399] text-xs px-2 py-0.5 rounded-full">-90.0%</span></td>
-                    <td className="px-6 py-4 text-right font-bold">$0.60 <span className="ml-2 bg-[#064e3b] text-[#34d399] text-xs px-2 py-0.5 rounded-full">-96.0%</span></td>
-                    <td className="px-6 py-4 text-center text-xs font-bold text-blue-400 uppercase">Available Now</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* Category 3 */}
-          <div>
-            <h3 className="text-green-400 font-semibold mb-6 flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full"></span> Lightweight / Fast
-            </h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left bg-[rgba(17,24,39,0.7)] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.1)] backdrop-blur-xl">
-                <thead>
-                  <tr className="border-b border-gray-800 text-gray-500 text-sm uppercase">
-                    <th className="px-6 py-4">Model</th>
-                    <th className="px-6 py-4 text-right">Input (USD)</th>
-                    <th className="px-6 py-4 text-right">Output (USD)</th>
-                    <th className="px-6 py-4 text-center">Status</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-300">
-                  <tr className="border-b border-gray-800/50">
-                    <td className="px-6 py-4 font-medium">Claude Haiku 4.5</td>
-                    <td className="px-6 py-4 text-right">$1.00</td>
-                    <td className="px-6 py-4 text-right">$5.00</td>
-                    <td className="px-6 py-4 text-center text-xs">Standard</td>
-                  </tr>
-                  <tr className="border-b border-gray-800/50">
-                    <td className="px-6 py-4 font-medium">GPT-5 Nano</td>
-                    <td className="px-6 py-4 text-right">$0.05</td>
-                    <td className="px-6 py-4 text-right">$0.40</td>
-                    <td className="px-6 py-4 text-center text-xs">Standard</td>
-                  </tr>
-                  <tr className="bg-[rgba(59,130,246,0.1)] text-white border-l-4 border-blue-500">
-                    <td className="px-6 py-4 font-bold">Qwen Flash</td>
-                    <td className="px-6 py-4 text-right font-bold">$0.10 <span className="ml-2 bg-[#064e3b] text-[#34d399] text-xs px-2 py-0.5 rounded-full">-90.0%</span></td>
-                    <td className="px-6 py-4 text-right font-bold">$0.40 <span className="ml-2 bg-[#064e3b] text-[#34d399] text-xs px-2 py-0.5 rounded-full">-92.0%</span></td>
-                    <td className="px-6 py-4 text-center text-xs font-bold text-blue-400 uppercase">Available Now</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PricingSection />
 
       {/* Pricing Calculator */}
       <PricingCalculator />

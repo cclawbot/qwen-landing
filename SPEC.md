@@ -1,87 +1,97 @@
-# Feature Spec: Dark/Light Mode Toggle
+# Feature Spec: Live Pricing API Integration
 
 ## Feature Name
-Dark/Light Mode Toggle - Theme Switcher
+Live Pricing API Integration
 
 ## Business Requirement
-Add a theme toggle button in the navigation header that allows users to switch between dark mode (default) and light mode. The preference should persist across sessions using localStorage.
+Extract hardcoded pricing data into a dynamic API endpoint. The landing page should fetch pricing from a simulated live API, enabling easy price updates without code changes.
 
 ## Business Goal Alignment
-- **Primary Goal**: Improve user experience by offering theme preference
-- **Secondary Goal**: Modern, polished look that adapts to system preferences
-- **Success Metric**: Users who engage with theme toggle have longer session times
+- **Primary Goal**: Enable dynamic pricing updates without redeployment
+- **Secondary Goal**: Demonstrate API integration capability for potential real integrations
+- **Success Metric**: Pricing page loads data from API with proper loading/error states
 
 ## In-Scope
-- Toggle button in navigation header (sun/moon icons)
-- Smooth transition between themes
-- Persist preference in localStorage
-- Respect system preference on first visit (prefers-color-scheme)
-- Light mode with proper contrast and readability
-- Mobile-responsive (same toggle works on all screen sizes)
+- Create mock API route `/api/pricing` returning JSON pricing data
+- Create `PricingData` type definition
+- Fetch pricing data on page load using React Suspense or useEffect
+- Display loading skeleton while fetching
+- Handle API errors gracefully with retry option
+- Cache pricing data to prevent excessive fetches
 
 ## Out-of-Scope
-- Color scheme customization beyond dark/light
-- OS-level theme sync after initial load
-- Server-side rendering of theme (client-only is fine)
+- Real-time pricing updates (polling)
+- Authentication for API
+- Price update admin panel
+- Multiple currency support
 
 ## Technical Details
 
 ### Component Structure
-- New component: `ThemeToggle.tsx` in `src/components/`
-- Uses React context or local state for theme management
-- "use client" directive required for interactivity
+- New file: `src/app/api/pricing/route.ts` - API route returning pricing JSON
+- New file: `src/types/pricing.ts` - TypeScript interfaces
+- New file: `src/hooks/usePricing.ts` - Custom hook for fetching pricing
+- Update: `src/app/page.tsx` - Fetch data from API instead of hardcoded
+
+### API Response Format
+```json
+{
+  "lastUpdated": "2026-03-08T15:30:00Z",
+  "models": [
+    {
+      "id": "qwen-plus-0728",
+      "name": "Qwen Plus (0728)",
+      "category": "flagship",
+      "inputPrice": 0.26,
+      "outputPrice": 0.78,
+      "status": "available"
+    }
+  ]
+}
+```
 
 ### State Management
-- Store theme in localStorage key: "theme" (value: "dark" | "light")
-- Check system preference as fallback: window.matchMedia("(prefers-color-scheme: light)")
+- useEffect to fetch on mount
+- React Suspense for loading state
+- Error boundary for failure handling
 
-### Styling Approach
-- Use Tailwind's `dark:` variant with class-based dark mode
-- Configure Tailwind for class-based dark mode in globals.css
-- Light mode: bg-gray-50, text-gray-900 for main content areas
-- Smooth 300ms transition on background-color and color
-
-### Dark Mode (Default)
-- bg-[#030712] (current dark background)
-- text-white / text-gray-300
-
-### Light Mode
-- bg-gray-50 / bg-white
-- text-gray-900 / text-gray-700
-- Adjusted card backgrounds with subtle shadows
+### Data Categories
+- Flagship/Thinking Models
+- Standard/Mid-tier
+- Lightweight/Fast
 
 ## Implementation Plan
 
-### Step 1: Configure Tailwind for Class-based Dark Mode
-- Update globals.css to enable class strategy
-- Add CSS variables for theme colors
+### Step 1: Create TypeScript Types
+- Create `src/types/pricing.ts`
+- Define `PricingModel`, `PricingCategory`, `PricingResponse` interfaces
 
-### Step 2: Create ThemeToggle Component
-- Create `src/components/ThemeToggle.tsx`
-- Implement useState for theme (default: undefined/null = system)
-- Add toggle function that switches dark/light
-- Add localStorage persistence
-- Render sun icon (light mode) / moon icon (dark mode)
+### Step 2: Create API Route
+- Create `src/app/api/pricing/route.ts`
+- Return mock pricing data matching current hardcoded values
+- Add CORS headers for potential external access
 
-### Step 3: Add Theme Script to Layout
-- Add script to layout.tsx to prevent flash of wrong theme
-- Read localStorage or system preference before React hydrates
+### Step 3: Create Custom Hook
+- Create `src/hooks/usePricing.ts`
+- Fetch from `/api/pricing`
+- Handle loading and error states
+- Implement simple caching (sessionStorage)
 
-### Step 4: Add Toggle to Navigation
-- Import ThemeToggle in page.tsx
-- Add to nav bar, right side
+### Step 4: Update Page Component
+- Remove hardcoded table data
+- Use usePricing hook to fetch and display
+- Add loading skeleton component
+- Add error boundary with retry
 
 ### Step 5: Test & Verify
 - Run lint, type-check, build
 - Browser snapshot test
+- Verify data loads correctly
 
 ## Acceptance Criteria
-- [ ] Toggle button appears in navigation header
-- [ ] Clicking toggle switches between dark and light mode
-- [ ] Theme persists across page refreshes (localStorage)
-- [ ] First visit respects system color scheme preference
-- [ ] No flash of unstyled content on page load
-- [ ] Light mode is readable with proper contrast
-- [ ] Smooth transition between themes (no jarring changes)
-- [ ] Mobile responsive - toggle visible on all screen sizes
+- [ ] API route returns valid JSON pricing data
+- [ ] Page displays loading skeleton while fetching
+- [ ] Pricing data renders correctly from API response
+- [ ] Error state shows with retry button if fetch fails
 - [ ] Lint, type-check, build all pass
+- [ ] Browser test confirms pricing displays correctly
