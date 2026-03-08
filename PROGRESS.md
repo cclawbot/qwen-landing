@@ -14,6 +14,7 @@
 - ✅ Contact form with validation
 - ✅ Testimonials/social proof section
 - ✅ FAQ accordion section
+- ✅ Dark/light mode toggle
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -55,11 +56,10 @@ Document:
 ---
 
 ## Next Feature Ideas (Priority Order)
-1. Add FAQ accordion (DONE)
-2. Add dark/light mode toggle
-3. Add live pricing API integration
-4. Add analytics
-5. Add multi-language support (i18n)
+1. Add dark/light mode toggle (DONE)
+2. Add live pricing API integration
+3. Add analytics
+4. Add multi-language support (i18n)
 
 ---
 
@@ -90,3 +90,12 @@ Document:
 - Group hover effect on question text for visual feedback
 - aria-expanded attribute for accessibility
 - FAQ placed between Testimonials and Contact Form - good flow from social proof to Q&A to CTA
+- Dark/light mode toggle uses class-based approach with body class toggling
+- Tailwind v4 uses @custom-variant for dark mode configuration
+- Theme script in layout.tsx head prevents flash of wrong theme (FOUC)
+- localStorage key "theme" stores user preference
+- System preference fallback via window.matchMedia("(prefers-color-scheme: light)")
+- Initial state function (getInitialTheme) avoids hydration mismatch
+- useRef to track first render prevents unnecessary class application
+- aria-label updates dynamically: "Switch to light mode" ↔ "Switch to dark mode"
+- 300ms CSS transition on body for smooth theme switch
