@@ -13,6 +13,7 @@
 - ✅ Pricing savings calculator
 - ✅ Contact form with validation
 - ✅ Testimonials/social proof section
+- ✅ FAQ accordion section
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -54,12 +55,11 @@ Document:
 ---
 
 ## Next Feature Ideas (Priority Order)
-1. Add testimonials/social proof section
-2. Add FAQ accordion
+1. Add FAQ accordion (DONE)
+2. Add dark/light mode toggle
 3. Add live pricing API integration
-4. Add dark/light mode toggle
-5. Add analytics
-6. Add multi-language support (i18n)
+4. Add analytics
+5. Add multi-language support (i18n)
 
 ---
 
@@ -83,3 +83,10 @@ Document:
 - Testimonials use "use client" directive since they could be extended with interactivity later
 - Escaped unicode quote character (&ldquo;) in JSX to satisfy ESLint react/no-unescaped-entities rule
 - Testimonial cards use gradient avatars matching brand colors
+- FAQ accordion uses React useState to track open/closed item (single open at a time)
+- Default openId=1 shows first answer expanded by default for better UX
+- Plus icon rotates 45° (to become X) when item is open - common accordion pattern
+- CSS transition on max-height for smooth expand/collapse animation
+- Group hover effect on question text for visual feedback
+- aria-expanded attribute for accessibility
+- FAQ placed between Testimonials and Contact Form - good flow from social proof to Q&A to CTA
