@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PricingCalculator from "@/components/PricingCalculator";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -166,6 +167,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Pricing Calculator */}
+      <PricingCalculator />
 
       {/* Features Section */}
       <section id="features" className="bg-gray-900/50 py-24">

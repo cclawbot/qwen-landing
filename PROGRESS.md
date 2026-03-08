@@ -1,25 +1,68 @@
 # Progress: Qwen Landing Page Features
 
 ## Current Status
-- **Repo**: https://github.com/cclawbot/qwen-landing-page
-- **Landing Page**: qwen-landing-page.html (static HTML)
+- **Repo**: https://github.com/cclawbot/qwen-landing
+- **Tech Stack**: Next.js 16 + TypeScript + Tailwind CSS
+- **CI/CD**: GitHub Actions (lint → type-check → build → deploy)
+- **Deployment**: Cloudflare Pages (free tier, no credit card)
 
 ## Completed Features
-- Initial landing page with 2026 pricing comparison
+- ✅ Initial Next.js landing page with 2026 pricing comparison
+- ✅ GitHub Actions CI/CD pipeline
+- ✅ Lint, type-check, build checks
 
-## Feature List (to be implemented incrementally)
+## Infrastructure (Free, No Credit Card)
+- **Hosting**: Cloudflare Pages (free, no bandwidth fees)
+- **CI/CD**: GitHub Actions (2000 mins/month free for private, unlimited for public)
+- **Repo**: GitHub (public)
 
 ---
 
-## Feature 1: [To be determined by cron]
+## Feature Development Workflow
 
-### Status: PENDING
+### Step 1: Choose Feature
+Small, atomic features only. Each should be completable in one session.
+
+### Step 2: Create SPEC.md
+Document:
+- Feature name & description
+- Business requirement
+- Business goal alignment
+- In-scope / Out-of-scope
+- Technical details
+- Implementation plan
+
+### Step 3: TDD Development
+1. **Red**: Write failing test
+2. **Green**: Implement minimum code to pass
+3. **Refactor**: Clean up
+
+### Step 4: Quality Checks
+- [ ] Lint passes (`npm run lint`)
+- [ ] Type check passes (`npm run type-check`)
+- [ ] Build passes (`npm run build`)
+- [ ] E2E test (browser screenshot)
+
+### Step 5: Commit & Push
+- Commit with descriptive message
+- Push to trigger CI/CD
+- Verify deployment
+
+---
+
+## Next Feature Ideas (Priority Order)
+1. Add pricing calculator (savings calculator)
+2. Add contact form with validation
+3. Add testimonials/social proof section
+4. Add FAQ accordion
+5. Add live pricing API integration
+6. Add dark/light mode toggle
+7. Add analytics
+8. Add multi-language support (i18n)
 
 ---
 
 ## Notes
-- Each feature should be small and atomic
-- Follow TDD: Red -> Green -> Refactor
-- Run lint/type checks before commit
-- E2E test in browser before commit
+- Feature size: Must be small enough for single logical change
+- Prefer multiple small commits over one large commit
 - Document lessons learned after each feature
