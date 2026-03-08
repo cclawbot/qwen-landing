@@ -11,6 +11,7 @@
 - ✅ GitHub Actions CI/CD pipeline
 - ✅ Lint, type-check, build checks
 - ✅ Pricing savings calculator
+- ✅ Contact form with validation
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -52,14 +53,12 @@ Document:
 ---
 
 ## Next Feature Ideas (Priority Order)
-1. Add pricing calculator (savings calculator)
-2. Add contact form with validation
-3. Add testimonials/social proof section
-4. Add FAQ accordion
-5. Add live pricing API integration
-6. Add dark/light mode toggle
-7. Add analytics
-8. Add multi-language support (i18n)
+1. Add testimonials/social proof section
+2. Add FAQ accordion
+3. Add live pricing API integration
+4. Add dark/light mode toggle
+5. Add analytics
+6. Add multi-language support (i18n)
 
 ---
 
@@ -74,3 +73,8 @@ Document:
 - Tailwind matches existing theme well - used existing color palette (green-400 for savings, blue-600 for primary actions)
 - Browser snapshot confirmed component renders correctly with default values
 - Build passed with no issues - Next.js 16.1.6 handled the component cleanly
+- Contact form validation uses onBlur to trigger "touched" state for better UX
+- Custom validation without external library keeps bundle small
+- Green border = valid, Red border = error - consistent visual feedback
+- Loading spinner via inline SVG - no external icon dependencies
+- setTimeout for form reset gives user time to see success message
