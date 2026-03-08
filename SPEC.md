@@ -1,78 +1,85 @@
-# Feature Spec: Testimonials / Social Proof Section
+# Feature Spec: FAQ Accordion Section
 
 ## Feature Name
-Testimonials Section - Social Proof Component
+FAQ Accordion - Expandable Questions & Answers
 
 ## Business Requirement
-Add a testimonials section to the landing page that displays customer quotes and trust indicators to build credibility and encourage conversions.
+Add an interactive FAQ section to the landing page that addresses common customer questions about pricing, API usage, and enterprise features. Accordion style keeps the page clean while allowing users to find answers quickly.
 
 ## Business Goal Alignment
-- **Primary Goal**: Increase conversion rate by building trust
-- **Secondary Goal**: Provide social proof that enterprise customers trust the service
-- **Success Metric**: Visitors who see testimonials are more likely to join the waitlist
+- **Primary Goal**: Reduce support burden by answering common questions upfront
+- **Secondary Goal**: Build trust by demonstrating transparency about pricing and capabilities
+- **Success Metric**: Visitors who engage with FAQ sections have higher conversion rates
 
 ## In-Scope
-- Display 3-4 customer testimonials with quotes, names, titles, and companies
-- Include company logos (placeholder SVGs or styled text)
-- Add a "Trusted by" heading
-- Responsive grid layout (1 col mobile, 2 col tablet, 3-4 col desktop)
-- Match existing dark theme styling
+- Display 5-6 frequently asked questions about QwenResell API
+- Click-to-expand accordion interaction (one open at a time)
+- Questions cover: pricing, getting started, enterprise features, volume discounts, support
+- Smooth expand/collapse animation
+- Dark theme matching existing site styling
+- Mobile-responsive (full-width on mobile)
 
 ## Out-of-Scope
-- Animated carousel/slider (keep it static for simplicity)
-- Video testimonials
-- Integration with external review platforms
-- Dynamic/CMS-driven testimonials
+- Search functionality within FAQ
+- Multiple accordions open at once
+- Nested accordions
+- Dynamic/CMS-driven FAQ content
+- FAQ categories/tabs
 
 ## Technical Details
 
 ### Component Structure
-- New component: `Testimonials.tsx` in `src/components/`
-- Section added to `page.tsx` after Features section, before Contact Form
+- New component: `FAQ.tsx` in `src/components/`
+- Section added to `page.tsx` after Testimonials section, before Contact Form
+- Uses React state to track open/closed state
 
 ### Data Model
 ```typescript
-interface Testimonial {
+interface FAQItem {
   id: number;
-  quote: string;
-  name: string;
-  title: string;
-  company: string;
-  companyLogo?: string; // Optional logo identifier
+  question: string;
+  answer: string;
 }
 ```
 
-### Sample Testimonials (Placeholder/Fictional)
-1. **Enterprise CTO** - "Saved $2.3M annually switching from GPT-5"
-2. **AI Startup Founder** - "Qwen Turbo powers our agent infrastructure"
-3. **Product Lead** - "92% cost reduction let us scale 10x"
+### FAQ Content
+1. **How much can I save with QwenResell?** - Pricing comparison details
+2. **How do I get started?** - API key signup process
+3. **What volume discounts do you offer?** - Enterprise pricing tiers
+4. **Is there a free tier?** - Free tier details
+5. **What enterprise features are available?** - SLA, support, custom contracts
+6. **How is the API different from direct Alibaba Cloud?** - Reseller benefits
 
 ### Styling
-- Dark card backgrounds with subtle borders (matching existing theme)
-- Quote icon styling
-- Name/title/company typography matching existing hierarchy
-- Responsive grid: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
+- Dark card backgrounds with subtle borders
+- Question row: clickable, cursor pointer, hover highlight
+- Plus/minus icon indicator (rotates on open)
+- Answer text with smooth height transition
+- Match existing dark theme: bg-[#030712], gray-400/500 text
 
 ## Implementation Plan
 
-### Step 1: Create Testimonials Component
-- Create `src/components/Testimonials.tsx`
-- Define Testimonial interface
-- Create static testimonials array
-- Render grid of testimonial cards
+### Step 1: Create FAQ Component
+- Create `src/components/FAQ.tsx` with "use client" directive
+- Define FAQItem interface
+- Create static FAQ array with 6 items
+- Implement accordion state with useState
+- Render expandable list with animation
 
 ### Step 2: Add to Page
-- Import and add `<Testimonials />` section in `page.tsx`
-- Place between Features and Contact Form sections
+- Import and add `<FAQ />` section in `page.tsx`
+- Place between Testimonials and Contact Form sections
 
 ### Step 3: Test & Verify
 - Run lint, type-check, build
 - Browser snapshot test
 
 ## Acceptance Criteria
-- [ ] Testimonials section renders on the page
-- [ ] Shows at least 3 testimonials with quote, name, title, company
-- [ ] Responsive layout works on mobile/tablet/desktop
+- [ ] FAQ section renders on the page with 6 questions
+- [ ] Clicking a question expands its answer with smooth animation
+- [ ] Only one answer open at a time (clicking another closes current)
+- [ ] Plus/minus icon rotates correctly on expand/collapse
 - [ ] Dark theme matches existing site styling
+- [ ] Mobile-responsive layout
 - [ ] No console errors
 - [ ] Lint, type-check, build all pass

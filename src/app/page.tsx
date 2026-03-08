@@ -3,6 +3,7 @@ import "./globals.css";
 import PricingCalculator from "@/components/PricingCalculator";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -196,6 +197,9 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <Testimonials />
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* Contact Form */}
       <ContactForm />
