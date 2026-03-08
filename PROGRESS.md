@@ -12,6 +12,7 @@
 - ✅ Lint, type-check, build checks
 - ✅ Pricing savings calculator
 - ✅ Contact form with validation
+- ✅ Testimonials/social proof section
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -78,3 +79,7 @@ Document:
 - Green border = valid, Red border = error - consistent visual feedback
 - Loading spinner via inline SVG - no external icon dependencies
 - setTimeout for form reset gives user time to see success message
+- Testimonials section added between Features and Contact Form - good placement for social proof
+- Testimonials use "use client" directive since they could be extended with interactivity later
+- Escaped unicode quote character (&ldquo;) in JSX to satisfy ESLint react/no-unescaped-entities rule
+- Testimonial cards use gradient avatars matching brand colors
