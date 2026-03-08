@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import PricingCalculator from "@/components/PricingCalculator";
 import ContactForm from "@/components/ContactForm";
+import Testimonials from "@/components/Testimonials";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -192,6 +193,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* Contact Form */}
       <ContactForm />

@@ -1,69 +1,78 @@
-# SPEC.md - Contact Form with Validation
+# Feature Spec: Testimonials / Social Proof Section
 
 ## Feature Name
-**Contact Form with Validation**
+Testimonials Section - Social Proof Component
 
 ## Business Requirement
-Replace the basic waitlist form with a fully validated contact form that captures name, email, company, and message. The form should provide immediate feedback on invalid inputs and show success state on submission.
+Add a testimonials section to the landing page that displays customer quotes and trust indicators to build credibility and encourage conversions.
 
 ## Business Goal Alignment
-- **Primary**: Increase lead quality by requiring more information
-- **Secondary**: Reduce bounce rate with better UX through real-time validation
+- **Primary Goal**: Increase conversion rate by building trust
+- **Secondary Goal**: Provide social proof that enterprise customers trust the service
+- **Success Metric**: Visitors who see testimonials are more likely to join the waitlist
 
 ## In-Scope
-- Name field (required, min 2 characters)
-- Email field (required, valid email format)
-- Company field (required)
-- Message field (optional, max 500 characters)
-- Real-time validation feedback
-- Submit button with loading state
-- Success message after submission
-- Form reset after success
-- Responsive design matching existing dark theme
-- Character counter for message field
+- Display 3-4 customer testimonials with quotes, names, titles, and companies
+- Include company logos (placeholder SVGs or styled text)
+- Add a "Trusted by" heading
+- Responsive grid layout (1 col mobile, 2 col tablet, 3-4 col desktop)
+- Match existing dark theme styling
 
 ## Out-of-Scope
-- Backend submission (form data logged to console only)
-- Email confirmation
-- ReCAPTCHA/integrity checks
-- Dark/light mode toggle
+- Animated carousel/slider (keep it static for simplicity)
+- Video testimonials
+- Integration with external review platforms
+- Dynamic/CMS-driven testimonials
 
 ## Technical Details
-- **Component**: `src/components/ContactForm.tsx`
-- **Styling**: Tailwind CSS (matching existing dark theme)
-- **State**: React useState for form fields and validation
-- **Validation**: Custom validation functions (no external library)
 
-### Validation Rules
-| Field | Rules |
-|-------|-------|
-| Name | Required, min 2 characters, max 100 characters |
-| Email | Required, valid email regex pattern |
-| Company | Required, min 2 characters, max 100 characters |
-| Message | Optional, max 500 characters |
+### Component Structure
+- New component: `Testimonials.tsx` in `src/components/`
+- Section added to `page.tsx` after Features section, before Contact Form
 
-### Form States
-1. **Empty**: Initial state with placeholder text
-2. **Error**: Red border, error message below field
-3. **Valid**: Green border (shown after first blur)
-4. **Submitting**: Button disabled, loading spinner
-5. **Success**: Green checkmark, "Thank you" message, form resets after 3 seconds
+### Data Model
+```typescript
+interface Testimonial {
+  id: number;
+  quote: string;
+  name: string;
+  title: string;
+  company: string;
+  companyLogo?: string; // Optional logo identifier
+}
+```
+
+### Sample Testimonials (Placeholder/Fictional)
+1. **Enterprise CTO** - "Saved $2.3M annually switching from GPT-5"
+2. **AI Startup Founder** - "Qwen Turbo powers our agent infrastructure"
+3. **Product Lead** - "92% cost reduction let us scale 10x"
+
+### Styling
+- Dark card backgrounds with subtle borders (matching existing theme)
+- Quote icon styling
+- Name/title/company typography matching existing hierarchy
+- Responsive grid: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
 
 ## Implementation Plan
-1. Create `src/components/ContactForm.tsx`
-2. Add validation logic with real-time feedback
-3. Style to match existing dark theme
-4. Add to page.tsx replacing the simple form in #waitlist
-5. Test with various inputs
+
+### Step 1: Create Testimonials Component
+- Create `src/components/Testimonials.tsx`
+- Define Testimonial interface
+- Create static testimonials array
+- Render grid of testimonial cards
+
+### Step 2: Add to Page
+- Import and add `<Testimonials />` section in `page.tsx`
+- Place between Features and Contact Form sections
+
+### Step 3: Test & Verify
+- Run lint, type-check, build
+- Browser snapshot test
 
 ## Acceptance Criteria
-- [ ] Name field shows error when empty or < 2 chars
-- [ ] Email field shows error when empty or invalid format
-- [ ] Company field shows error when empty or < 2 chars
-- [ ] Message field shows character count (X/500)
-- [ ] Error messages appear in red below invalid fields
-- [ ] Submit button shows loading state during submission
-- [ ] Success message displays after valid submission
-- [ ] Form resets to empty state after success
-- [ ] Mobile responsive (stacks vertically on small screens)
-- [ ] Matches existing dark theme styling
+- [ ] Testimonials section renders on the page
+- [ ] Shows at least 3 testimonials with quote, name, title, company
+- [ ] Responsive layout works on mobile/tablet/desktop
+- [ ] Dark theme matches existing site styling
+- [ ] No console errors
+- [ ] Lint, type-check, build all pass
