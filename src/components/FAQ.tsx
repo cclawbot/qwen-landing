@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackFaqClicked } from "@/lib/analytics";
 
 interface FAQItem {
   id: number;
@@ -93,6 +94,10 @@ export default function FAQ() {
   const [openId, setOpenId] = useState<number | null>(1);
 
   const handleToggle = (id: number) => {
+    if (openId !== id) {
+      // Track when opening a new question (not when closing)
+      trackFaqClicked(`question-${id}`);
+    }
     setOpenId(openId === id ? null : id);
   };
 

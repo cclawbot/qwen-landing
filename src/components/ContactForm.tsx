@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { trackFormViewed } from "@/lib/analytics";
 
 interface FormData {
   name: string;
@@ -62,6 +63,15 @@ export default function ContactForm() {
   const [touched, setTouched] = useState<TouchedFields>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const hasTrackedRef = useRef(false);
+
+  // Track form view on mount
+  useEffect(() => {
+    if (!hasTrackedRef.current) {
+      hasTrackedRef.current = true;
+      trackFormViewed();
+    }
+  }, []);
 
   const validateField = (field: keyof FormData): string | undefined => {
     switch (field) {

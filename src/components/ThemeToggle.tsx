@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { trackThemeToggled } from "@/lib/analytics";
 
 function getInitialTheme(): "dark" | "light" {
   if (typeof window === "undefined") return "dark";
@@ -30,6 +31,10 @@ export default function ThemeToggle() {
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
+    
+    // Track theme toggle
+    trackThemeToggled(newTheme);
+    
     try {
       localStorage.setItem("theme", newTheme);
     } catch {

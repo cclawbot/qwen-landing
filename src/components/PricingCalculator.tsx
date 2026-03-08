@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
+import { trackCalculatorUsed } from "@/lib/analytics";
 
 // Pricing data (per 1M tokens)
 const PRICING = {
@@ -38,6 +39,7 @@ export default function PricingCalculator() {
   const [inputTokens, setInputTokens] = useState<string>("1");
   const [outputTokens, setOutputTokens] = useState<string>("0.5");
   const [selectedModel, setSelectedModel] = useState<string>("GPT-5.4 Pro");
+  const hasTrackedRef = useRef(false);
 
   const calculations = useMemo(() => {
     const inputM = parseFloat(inputTokens) || 0;
@@ -60,6 +62,16 @@ export default function PricingCalculator() {
       savingsPercent,
     };
   }, [inputTokens, outputTokens, selectedModel]);
+
+  // Track calculator usage on first meaningful calculation
+  useEffect(() => {
+    const inputM = parseFloat(inputTokens) || 0;
+    const outputM = parseFloat(outputTokens) || 0;
+    if (!hasTrackedRef.current && (inputM > 0 || outputM > 0)) {
+      hasTrackedRef.current = true;
+      trackCalculatorUsed();
+    }
+  }, [inputTokens, outputTokens]);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("en-US", {

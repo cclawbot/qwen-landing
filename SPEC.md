@@ -1,97 +1,96 @@
-# Feature Spec: Live Pricing API Integration
+# Feature Spec: Analytics Integration
 
 ## Feature Name
-Live Pricing API Integration
+Analytics Integration
 
 ## Business Requirement
-Extract hardcoded pricing data into a dynamic API endpoint. The landing page should fetch pricing from a simulated live API, enabling easy price updates without code changes.
+Add basic analytics tracking to understand visitor behavior on the landing page. Track page views and key interactions (pricing calculator usage, contact form views, FAQ interactions).
 
 ## Business Goal Alignment
-- **Primary Goal**: Enable dynamic pricing updates without redeployment
-- **Secondary Goal**: Demonstrate API integration capability for potential real integrations
-- **Success Metric**: Pricing page loads data from API with proper loading/error states
+- **Primary Goal**: Understand visitor behavior and conversion patterns
+- **Secondary Goal**: Make data-driven decisions about the landing page
+- **Success Metric**: Analytics events are recorded and viewable
 
 ## In-Scope
-- Create mock API route `/api/pricing` returning JSON pricing data
-- Create `PricingData` type definition
-- Fetch pricing data on page load using React Suspense or useEffect
-- Display loading skeleton while fetching
-- Handle API errors gracefully with retry option
-- Cache pricing data to prevent excessive fetches
+- Create analytics tracking utility
+- Track page views on route changes
+- Track key interactions: calculator use, form view, FAQ clicks
+- Create simple analytics dashboard API endpoint
+- Privacy-focused: no personal data collection, no cookies required
 
 ## Out-of-Scope
-- Real-time pricing updates (polling)
-- Authentication for API
-- Price update admin panel
-- Multiple currency support
+- Real-time dashboard UI (view via API only)
+- User session tracking
+- A/B testing
+- External analytics service integration (e.g., Google Analytics, Plausible)
+- Data persistence (in-memory for demo)
 
 ## Technical Details
 
 ### Component Structure
-- New file: `src/app/api/pricing/route.ts` - API route returning pricing JSON
-- New file: `src/types/pricing.ts` - TypeScript interfaces
-- New file: `src/hooks/usePricing.ts` - Custom hook for fetching pricing
-- Update: `src/app/page.tsx` - Fetch data from API instead of hardcoded
+- New file: `src/lib/analytics.ts` - Analytics tracking utility
+- New file: `src/app/api/analytics/route.ts` - API endpoint to view stats
+- Update: `src/app/layout.tsx` - Track page views on route changes
+
+### Event Types
+```typescript
+type AnalyticsEvent = 
+  | { type: 'pageview'; path: string; timestamp: string }
+  | { type: 'calculator_used'; timestamp: string }
+  | { type: 'form_viewed'; timestamp: string }
+  | { type: 'faq_clicked'; questionId: string; timestamp: string }
+  | { type: 'theme_toggled'; to: 'light' | 'dark'; timestamp: string }
+```
 
 ### API Response Format
 ```json
 {
-  "lastUpdated": "2026-03-08T15:30:00Z",
-  "models": [
-    {
-      "id": "qwen-plus-0728",
-      "name": "Qwen Plus (0728)",
-      "category": "flagship",
-      "inputPrice": 0.26,
-      "outputPrice": 0.78,
-      "status": "available"
-    }
-  ]
+  "totalPageviews": 150,
+  "uniquePaths": ["/", "/pricing", "/contact"],
+  "events": {
+    "calculator_used": 25,
+    "form_viewed": 40,
+    "faq_clicked": 60,
+    "theme_toggled": 15
+  },
+  "recentEvents": [...]
 }
 ```
 
-### State Management
-- useEffect to fetch on mount
-- React Suspense for loading state
-- Error boundary for failure handling
+### Implementation Plan
 
-### Data Categories
-- Flagship/Thinking Models
-- Standard/Mid-tier
-- Lightweight/Fast
+### Step 1: Create Analytics Utility
+- Create `src/lib/analytics.ts`
+- Define AnalyticsEvent type
+- Create trackEvent function that sends to API
+- Include page path detection
 
-## Implementation Plan
+### Step 2: Create Analytics API Route
+- Create `src/app/api/analytics/route.ts`
+- In-memory storage for events (simple array)
+- GET endpoint to retrieve stats
+- POST endpoint to record events
 
-### Step 1: Create TypeScript Types
-- Create `src/types/pricing.ts`
-- Define `PricingModel`, `PricingCategory`, `PricingResponse` interfaces
+### Step 3: Integrate with Layout
+- Update `src/app/layout.tsx` to track page views
+- Use usePathname from next/navigation for route tracking
 
-### Step 2: Create API Route
-- Create `src/app/api/pricing/route.ts`
-- Return mock pricing data matching current hardcoded values
-- Add CORS headers for potential external access
-
-### Step 3: Create Custom Hook
-- Create `src/hooks/usePricing.ts`
-- Fetch from `/api/pricing`
-- Handle loading and error states
-- Implement simple caching (sessionStorage)
-
-### Step 4: Update Page Component
-- Remove hardcoded table data
-- Use usePricing hook to fetch and display
-- Add loading skeleton component
-- Add error boundary with retry
+### Step 4: Track Key Interactions
+- Add tracking to PricingCalculator when used
+- Add tracking to ContactForm when viewed
+- Add tracking to FAQ when questions clicked
+- Add tracking to ThemeToggle when toggled
 
 ### Step 5: Test & Verify
 - Run lint, type-check, build
-- Browser snapshot test
-- Verify data loads correctly
+- Browser test to confirm events trigger
+- Test analytics API returns data
 
 ## Acceptance Criteria
-- [ ] API route returns valid JSON pricing data
-- [ ] Page displays loading skeleton while fetching
-- [ ] Pricing data renders correctly from API response
-- [ ] Error state shows with retry button if fetch fails
+- [ ] Page views are tracked automatically on route changes
+- [ ] Calculator usage triggers event
+- [ ] FAQ clicks trigger events
+- [ ] Theme toggle triggers events
+- [ ] Analytics API returns event data
 - [ ] Lint, type-check, build all pass
-- [ ] Browser test confirms pricing displays correctly
+- [ ] Browser test confirms tracking works
