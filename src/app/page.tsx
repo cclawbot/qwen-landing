@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import PricingCalculator from "@/components/PricingCalculator";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -192,21 +193,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA / Waitlist Section */}
-      <section id="waitlist" className="container mx-auto px-6 py-32 text-center">
-        <div className="max-w-3xl mx-auto bg-[rgba(17,24,39,0.7)] p-12 rounded-[2rem] border border-blue-500/30 backdrop-blur-xl">
-          <h2 className="text-4xl font-extrabold mb-4">Ready for Sub-Dollar Pricing?</h2>
-          <p className="text-gray-400 mb-10">We are onboarding a limited number of B2B partners for Q2 2026. Secure your spot on the priority access list.</p>
-          
-          <form className="flex flex-col md:flex-row gap-4">
-            <input type="email" placeholder="Enter your business email" className="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-6 py-4 focus:outline-none focus:border-blue-500 transition-all text-white" required />
-            <button type="submit" className="bg-white text-black px-10 py-4 rounded-xl font-bold hover:bg-gray-200 transition-all">
-              Join Waitlist
-            </button>
-          </form>
-          <p className="mt-6 text-xs text-gray-500">Join 400+ enterprises optimizing their LLM spend.</p>
-        </div>
-      </section>
+      {/* Contact Form */}
+      <ContactForm />
 
       {/* Footer */}
       <footer className="border-t border-gray-800 py-12">
