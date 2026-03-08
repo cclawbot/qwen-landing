@@ -10,6 +10,7 @@
 - ✅ Initial Next.js landing page with 2026 pricing comparison
 - ✅ GitHub Actions CI/CD pipeline
 - ✅ Lint, type-check, build checks
+- ✅ Pricing savings calculator
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -66,3 +67,10 @@ Document:
 - Feature size: Must be small enough for single logical change
 - Prefer multiple small commits over one large commit
 - Document lessons learned after each feature
+
+## Lessons Learned (March 8, 2026)
+- Pricing calculator using `useMemo` for real-time calculation works well
+- Client component ("use client") required for interactive calculator
+- Tailwind matches existing theme well - used existing color palette (green-400 for savings, blue-600 for primary actions)
+- Browser snapshot confirmed component renders correctly with default values
+- Build passed with no issues - Next.js 16.1.6 handled the component cleanly
