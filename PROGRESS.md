@@ -18,6 +18,7 @@
 - ✅ Live pricing API integration
 - ✅ Analytics integration
 - ✅ Multi-language support (i18n)
+- ✅ SEO optimization (OpenGraph, Twitter Cards, JSON-LD)
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -129,3 +130,13 @@ Document:
 - Always provide context value (even before mount) to avoid SSR hydration errors
 - Components use "use client" directive to enable useTranslation hook
 - ESLint warns about setState in useEffect - disabled with eslint-disable for localStorage hydration pattern
+- SEO optimization uses Next.js 16 Metadata API - comprehensive type-safe meta tags
+- OpenGraph tags enable rich social previews when links are shared on social media
+- Twitter Card meta tags similar to OG but with twitter: prefix for Twitter/X sharing
+- JSON-LD structured data provides semantic markup for search engines
+- FAQPage schema in JSON-LD can help FAQ content appear in search results
+- Organization schema helps search engines understand the business entity
+- favicon.svg and og-image.svg created as vector assets for crisp rendering at any size
+- Next.js automatically handles favicon.ico generation from SVG source
+- Always rebuild and restart server after metadata changes to see updated HTML
+- Next.js caches static pages - clear cache by rebuilding or using fresh server start
