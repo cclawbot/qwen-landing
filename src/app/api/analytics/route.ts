@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-static';
+
 // In-memory storage for analytics events
 // Note: This resets on server restart (perfect for serverless/edge)
 const events: Array<{

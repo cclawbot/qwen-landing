@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { PricingResponse } from '@/types/pricing';
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
 
 const pricingData: PricingResponse = {
   lastUpdated: new Date().toISOString(),
