@@ -16,6 +16,7 @@ import CaseStudies from "@/components/CaseStudies";
 import TrustBadges from "@/components/TrustBadges";
 import StatsSection from "@/components/StatsSection";
 import BackToTop from "@/components/BackToTop";
+import EnhancedFooter from "@/components/EnhancedFooter";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -129,12 +130,8 @@ export default function Home() {
       {/* Back to Top Button */}
       <BackToTop />
 
-      {/* Footer */}
-      <footer className="border-t py-12" style={{ borderColor: 'var(--border-color)' }}>
-        <div className="container mx-auto px-6 text-center text-sm" style={{ color: 'var(--text-secondary)' }}>
-          <p>&copy; 2026 QwenResell API Services. All rights reserved. Pricing accurate as of March 2026.</p>
-        </div>
-      </footer>
+      {/* Enhanced Footer */}
+      <EnhancedFooter />
     </div>
   );
 }
