@@ -1,51 +1,51 @@
-# Feature: Cookie Consent Banner
+# Feature: Customer Logo Ticker
 
 ## Description
-Add a cookie consent banner at the bottom of the page that allows users to accept or reject non-essential cookies, with preference persistence.
+Add an animated horizontal ticker of customer/partner logos to provide social proof. Logos scroll continuously in a loop to show enterprise customers without taking much vertical space.
 
 ## Business Requirement
-Ensure GDPR/compliance with cookie consent requirements while providing a good user experience. Users should be able to manage their cookie preferences.
+Add visual social proof through scrolling customer logos to build trust and credibility with potential enterprise customers.
 
 ## Business Goal
-Build trust through transparency and comply with privacy regulations without blocking essential functionality.
+Increase conversion by showcasing trusted companies using QwenResell, reinforcing the product's legitimacy and enterprise readiness.
 
 ## In-Scope
-- Fixed bottom banner with cookie policy notice
-- "Accept All" and "Reject All" buttons
-- "Preferences" link for granular control
-- Preferences modal with toggle switches (Essential, Analytics, Marketing)
-- localStorage persistence for user consent
-- Smooth fade-in animation on first visit
-- No banner shown if user already consented
+- Horizontal scrolling logo animation (infinite loop)
+- 8-10 placeholder company logos with names
+- Smooth continuous scroll animation
+- Pause on hover for user readability
+- Responsive: fewer logos shown on mobile
+- Subtle section wrapper with heading
+- Placed between TrustBadges and StatsSection
 
 ## Out-of-Scope
-- Cookie scanning/auto-detection
-- Cookie policy detailed page
-- Consent history/log
+- Real company logo images (use styled placeholders)
+- Video backgrounds
+- Click interactions on logos
 
 ## Technical Details
-- "use client" directive for localStorage and UI interaction
-- useState for modal open/close state
-- useState for consent preferences (analytics, marketing toggles)
-- useEffect for checking localStorage on mount
-- Fixed position at bottom with z-index
-- CSS transition for fade in/out
-- localStorage key: "cookie_consent"
+- CSS animation (@keyframes) for horizontal scroll
+- Two identical logo rows that offset to create seamless loop
+- "use client" directive for hover interaction
+- Tailwind for styling
+- Animation: translateX from 0% to -50% (half width for seamless loop)
+- Duration: ~30 seconds for full loop
+- Pause on hover: animation-play-state: paused
 
 ## Implementation Plan
-1. Create CookieConsent component in /src/components/CookieConsent.tsx
-2. Add to page.tsx before EnhancedFooter
-3. Test banner appears on first visit
-4. Test preferences modal functionality
-5. Test localStorage persistence
+1. Create CustomerLogos component in /src/components/CustomerLogos.tsx
+2. Add to page.tsx between TrustBadges and StatsSection
+3. Test animation runs smoothly
+4. Test pause on hover works
+5. Run lint, type-check, build
 
 ## Acceptance Criteria
-- [ ] Banner appears on first visit (no localStorage)
-- [ ] Accept All saves full consent and hides banner
-- [ ] Reject All saves minimal consent and hides banner
-- [ ] Preferences button opens modal with toggles
-- [ ] Saving preferences hides banner
-- [ ] Banner does NOT appear on return visits after consent
+- [ ] Logos scroll horizontally in infinite loop
+- [ ] Animation pauses when user hovers
+- [ ] Section has heading "Trusted by Leading Enterprises"
+- [ ] 8-10 company logos displayed
+- [ ] Responsive: shows fewer logos on mobile
 - [ ] Lint passes
 - [ ] Type-check passes
 - [ ] Build passes
+- [ ] Browser test confirms animation visible

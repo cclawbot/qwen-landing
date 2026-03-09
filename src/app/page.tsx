@@ -14,6 +14,7 @@ import HowItWorks from "@/components/HowItWorks";
 import Team from "@/components/Team";
 import CaseStudies from "@/components/CaseStudies";
 import TrustBadges from "@/components/TrustBadges";
+import CustomerLogos from "@/components/CustomerLogos";
 import StatsSection from "@/components/StatsSection";
 import BackToTop from "@/components/BackToTop";
 import EnhancedFooter from "@/components/EnhancedFooter";
@@ -71,6 +72,9 @@ export default function Home() {
 
       {/* Trust Badges Section */}
       <TrustBadges />
+
+      {/* Customer Logos Ticker */}
+      <CustomerLogos />
 
       {/* Stats Section */}
       <StatsSection />
