@@ -68,7 +68,8 @@ Document:
 1. Add newsletter signup (DONE)
 2. Add more landing page sections (blog, team, integrations showcase) - all DONE
 3. Add trust/security badges (SOC2, enterprise logos) - DONE
-4. Add case studies section (detailed customer success stories)
+4. Add case studies section (detailed customer success stories) - DONE
+5. Add interactive ROI calculator with more metrics
 
 ---
 
@@ -76,6 +77,17 @@ Document:
 - Feature size: Must be small enough for single logical change
 - Prefer multiple small commits over one large commit
 - Document lessons learned after each feature
+
+## Lessons Learned (March 9, 2026)
+- Case studies add deeper social proof than testimonials with quantifiable metrics
+- Each case study includes: company name, industry, challenge, solution, and 2 key metrics
+- Industry color-coded tags (blue for SaaS, green for finance, purple for healthcare)
+- Metrics displayed prominently as large numbers with labels (87% Cost Reduction, $1.8M saved)
+- Static component (no "use client" needed) - server-rendered for SEO
+- Responsive grid: 1 col mobile, 2 cols tablet, 3 cols desktop - same pattern as other sections
+- Hover effects: scale-[1.02] and shadow-xl - consistent with Blog section styling
+- Placed between Team and Testimonials - good flow from people to success stories to social proof
+- Browser test confirmed all 3 case study cards render with correct data
 
 ## Lessons Learned (March 8, 2026)
 - Pricing calculator using `useMemo` for real-time calculation works well
