@@ -1,38 +1,38 @@
-# SPEC.md - Newsletter Signup Feature
+# SPEC.md - Integrations Showcase Feature
 
 ## Feature Name
-Newsletter Signup Section
+Integrations Showcase Section
 
 ## Business Requirement
-Add a newsletter signup section to capture leads who may not be ready for full contact yet. Simple email-only form with validation and success state.
+Add a section showcasing tools and platforms that integrate with Qwen API. Display partner/ecosystem logos in a grid to build trust and demonstrate ecosystem maturity.
 
 ## Business Goal Alignment
-- Increase lead capture conversion (lower friction than full contact form)
-- Build email list for product updates and promotions
-- Non-intrusive placement between Testimonials and FAQ
+- Build trust through social proof of ecosystem
+- Show potential customers their existing tools work with Qwen
+- Increase conversion by reducing integration concerns
 
 ## In-Scope
-- Newsletter signup component with email input
-- Client-side email validation
-- Success state with confirmation message
-- Integration with existing i18n (translations)
+- Integrations showcase component with logo grid
+- Minimum 6 integration partners (popular dev tools)
+- Responsive grid layout (2 cols mobile, 3 cols tablet, 6 cols desktop)
 - Dark/light mode theming
-- Analytics tracking for form views and submissions
+- Use inline SVG placeholders for logos (no external dependencies)
+- Subtle hover effect on integration cards
 
 ## Out-of-Scope
-- Backend email storage (just log to console for now)
-- Email confirmation workflow
-- Multiple newsletter categories
+- Real partnership verification
+- Dynamic integration fetching from API
+- Integration detail pages
+- Animated logo marquee
 
 ## Technical Details
-- Component: `Newsletter.tsx` in `/src/components/`
-- Placement: Between Testimonials and FAQ sections
-- Styling: Match existing card design with backdrop blur
-- "use client" directive for form interactivity
+- Component: `Integrations.tsx` in `/src/components/`
+- Placement: Between Features and Testimonials sections
+- Styling: Match existing card design, grayscale logos with color on hover
+- "use client" directive not needed (static component)
 
 ## Implementation Plan
-1. Create Newsletter component with email form
-2. Add to page.tsx between Testimonials and FAQ
-3. Add translations for i18n
-4. Add analytics tracking
-5. Test in browser
+1. Create Integrations component with SVG logo grid
+2. Add to page.tsx between Features and Testimonials
+3. Test in browser
+4. Lint, type-check, build

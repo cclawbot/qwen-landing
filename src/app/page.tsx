@@ -7,6 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import ThemeToggle from "@/components/ThemeToggle";
 import Newsletter from "@/components/Newsletter";
+import Integrations from "@/components/Integrations";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -80,6 +81,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Integrations Section */}
+      <Integrations />
 
       {/* Testimonials Section */}
       <Testimonials />
