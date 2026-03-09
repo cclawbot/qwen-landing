@@ -19,6 +19,8 @@
 - ✅ Analytics integration
 - ✅ Multi-language support (i18n)
 - ✅ SEO optimization (OpenGraph, Twitter Cards, JSON-LD)
+- ✅ Newsletter signup
+- ✅ Integrations showcase section
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -61,7 +63,10 @@ Document:
 
 ## Next Feature Ideas (Priority Order)
 1. Add newsletter signup (DONE)
-2. Add more landing page sections (blog, team, integrations showcase)
+2. Add more landing page sections (blog, team, integrations showcase) - integrations DONE, How It Works DONE
+3. Add blog section (company updates, API tutorials)
+4. Add team section (founders, advisors)
+5. Add trust/security badges (SOC2, enterprise logos)
 
 ---
 
@@ -154,3 +159,9 @@ Document:
 - Placeholder colored initials used instead of external SVG logos (no dependencies)
 - Hover scale-105 effect on cards for visual feedback
 - Component placed between Features and Testimonials for good flow
+- How It Works section adds 3-step onboarding explanation early in the funnel
+- Section placed between Hero and Pricing - shows before price comparison
+- Static component (no "use client" needed) - renders on server
+- Inline SVG icons match color scheme (blue/purple/green for each step)
+- Responsive grid: stacks on mobile, 3 columns on desktop
+- Section uses same card styling as other sections for visual consistency
