@@ -1,96 +1,90 @@
-# Feature Spec: Analytics Integration
+# Feature SPEC: Multi-Language Support (i18n)
 
 ## Feature Name
-Analytics Integration
+Multi-language support (i18n)
 
 ## Business Requirement
-Add basic analytics tracking to understand visitor behavior on the landing page. Track page views and key interactions (pricing calculator usage, contact form views, FAQ interactions).
+Add support for multiple languages (English, Spanish, Chinese) to the landing page to serve international customers.
 
 ## Business Goal Alignment
-- **Primary Goal**: Understand visitor behavior and conversion patterns
-- **Secondary Goal**: Make data-driven decisions about the landing page
-- **Success Metric**: Analytics events are recorded and viewable
+- Expand market reach to non-English speaking customers
+- Improve conversion rates for international B2B buyers
+- Zero external dependencies (lightweight i18n implementation)
 
 ## In-Scope
-- Create analytics tracking utility
-- Track page views on route changes
-- Track key interactions: calculator use, form view, FAQ clicks
-- Create simple analytics dashboard API endpoint
-- Privacy-focused: no personal data collection, no cookies required
+- Support English (default), Spanish, Chinese (Simplified)
+- Language switcher in header/navbar
+- Persist language choice in localStorage
+- Translate all visible text: hero, features, pricing, testimonials, FAQ, contact form, footer
 
 ## Out-of-Scope
-- Real-time dashboard UI (view via API only)
-- User session tracking
-- A/B testing
-- External analytics service integration (e.g., Google Analytics, Plausible)
-- Data persistence (in-memory for demo)
+- RTL language support
+- Dynamic URL-based routing (/en/, /es/)
+- Server-side translation loading
+- External i18n libraries (next-intl, react-i18next)
 
 ## Technical Details
 
-### Component Structure
-- New file: `src/lib/analytics.ts` - Analytics tracking utility
-- New file: `src/app/api/analytics/route.ts` - API endpoint to view stats
-- Update: `src/app/layout.tsx` - Track page views on route changes
+### Implementation Approach
+1. **Translation JSON files** in `/src/lib/i18n/` - language key-value pairs
+2. **I18nContext** - React context for current language state
+3. **useTranslation hook** - Access translations in components
+4. **LanguageToggle component** - Dropdown/button in navbar
+5. **Wrap page content** - Use translation keys instead of hardcoded text
 
-### Event Types
-```typescript
-type AnalyticsEvent = 
-  | { type: 'pageview'; path: string; timestamp: string }
-  | { type: 'calculator_used'; timestamp: string }
-  | { type: 'form_viewed'; timestamp: string }
-  | { type: 'faq_clicked'; questionId: string; timestamp: string }
-  | { type: 'theme_toggled'; to: 'light' | 'dark'; timestamp: string }
+### File Structure
+```
+src/
+├── lib/i18n/
+│   ├── en.json
+│   ├── es.json
+│   └── zh.json
+├── context/
+│   └── I18nContext.tsx
+├── hooks/
+│   └── useTranslation.ts
+└── components/
+    └── LanguageToggle.tsx
 ```
 
-### API Response Format
+### Translation Keys (sample)
 ```json
 {
-  "totalPageviews": 150,
-  "uniquePaths": ["/", "/pricing", "/contact"],
-  "events": {
-    "calculator_used": 25,
-    "form_viewed": 40,
-    "faq_clicked": 60,
-    "theme_toggled": 15
-  },
-  "recentEvents": [...]
+  "nav.pricing": "Pricing",
+  "nav.features": "Features", 
+  "nav.waitlist": "Join Waitlist",
+  "hero.title": "Stop Overpaying for Thinking Models.",
+  "hero.subtitle": "Access Alibaba's Qwen 0728 architecture with up to 99% savings...",
+  "cta.joinWaitlist": "Join the Waitlist",
+  "cta.viewComparison": "View Comparison"
 }
 ```
 
-### Implementation Plan
+## Implementation Plan
 
-### Step 1: Create Analytics Utility
-- Create `src/lib/analytics.ts`
-- Define AnalyticsEvent type
-- Create trackEvent function that sends to API
-- Include page path detection
+### Phase 1: Setup (10 min)
+1. Create translation JSON files (en, es, zh)
+2. Create I18nContext provider
+3. Create useTranslation hook
 
-### Step 2: Create Analytics API Route
-- Create `src/app/api/analytics/route.ts`
-- In-memory storage for events (simple array)
-- GET endpoint to retrieve stats
-- POST endpoint to record events
+### Phase 2: Components (10 min)
+1. Create LanguageToggle component
+2. Add to navbar
+3. Wrap page.tsx with provider
 
-### Step 3: Integrate with Layout
-- Update `src/app/layout.tsx` to track page views
-- Use usePathname from next/navigation for route tracking
+### Phase 3: Translation (15 min)
+1. Replace all hardcoded text in page.tsx with translation keys
+2. Translate components: PricingCalculator, ContactForm, Testimonials, FAQ
 
-### Step 4: Track Key Interactions
-- Add tracking to PricingCalculator when used
-- Add tracking to ContactForm when viewed
-- Add tracking to FAQ when questions clicked
-- Add tracking to ThemeToggle when toggled
-
-### Step 5: Test & Verify
-- Run lint, type-check, build
-- Browser test to confirm events trigger
-- Test analytics API returns data
+### Phase 4: Polish (5 min)
+1. Add language persistence (localStorage)
+2. Test language switching
+3. Verify all text translates correctly
 
 ## Acceptance Criteria
-- [ ] Page views are tracked automatically on route changes
-- [ ] Calculator usage triggers event
-- [ ] FAQ clicks trigger events
-- [ ] Theme toggle triggers events
-- [ ] Analytics API returns event data
-- [ ] Lint, type-check, build all pass
-- [ ] Browser test confirms tracking works
+- [ ] Language toggle visible in navbar
+- [ ] Three languages available: EN, ES, ZH
+- [ ] Clicking language changes all visible text
+- [ ] Language preference persists on page reload
+- [ ] No layout shift when switching languages
+- [ ] All components translated (hero, features, pricing, testimonials, FAQ, contact, footer)

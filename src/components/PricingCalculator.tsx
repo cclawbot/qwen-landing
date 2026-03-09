@@ -3,7 +3,6 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { trackCalculatorUsed } from "@/lib/analytics";
 
-// Pricing data (per 1M tokens)
 const PRICING = {
   competitors: {
     "GPT-5.4 Pro": { input: 30.0, output: 180.0 },
@@ -14,7 +13,6 @@ const PRICING = {
     "GPT-5 Nano": { input: 0.05, output: 0.4 },
   },
   qwen: {
-    // Using Qwen Plus as default comparison (mid-tier flagship)
     input: 0.26,
     output: 0.78,
   },
@@ -63,7 +61,6 @@ export default function PricingCalculator() {
     };
   }, [inputTokens, outputTokens, selectedModel]);
 
-  // Track calculator usage on first meaningful calculation
   useEffect(() => {
     const inputM = parseFloat(inputTokens) || 0;
     const outputM = parseFloat(outputTokens) || 0;
@@ -89,14 +86,12 @@ export default function PricingCalculator() {
           Calculate Your Savings
         </h2>
         <p className="text-gray-400 text-center mb-12">
-          See how much your business can save by switching to Qwen
+          See how much you can save by switching to Qwen API
         </p>
 
         <div className="bg-[rgba(17,24,39,0.7)] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.1)] backdrop-blur-xl p-8">
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Inputs */}
             <div className="md:col-span-2 space-y-6">
-              {/* Model Selection */}
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2">
                   Currently Using
@@ -114,7 +109,6 @@ export default function PricingCalculator() {
                 </select>
               </div>
 
-              {/* Token Inputs */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-400 mb-2">
@@ -147,10 +141,9 @@ export default function PricingCalculator() {
               </div>
             </div>
 
-            {/* Results */}
             <div className="bg-gray-900/50 rounded-xl p-6 flex flex-col justify-center">
               <div className="text-center">
-                <p className="text-sm text-gray-400 mb-2">Your Monthly Savings</p>
+                <p className="text-sm text-gray-400 mb-2">Your Savings</p>
                 <p className="text-4xl font-bold text-green-400 mb-2">
                   {formatCurrency(calculations.savings)}
                 </p>
@@ -161,7 +154,7 @@ export default function PricingCalculator() {
 
               <div className="mt-6 pt-6 border-t border-gray-700 space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">Current cost:</span>
+                  <span className="text-gray-400">Current Cost:</span>
                   <span>{formatCurrency(calculations.currentCost)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
@@ -174,7 +167,6 @@ export default function PricingCalculator() {
             </div>
           </div>
 
-          {/* CTA */}
           <div className="mt-8 pt-6 border-t border-gray-800 text-center">
             <p className="text-sm text-gray-400 mb-4">
               Ready to start saving? Join the priority waitlist.
@@ -183,7 +175,7 @@ export default function PricingCalculator() {
               href="#waitlist"
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition-all"
             >
-              Get Started
+              Join Waitlist
             </a>
           </div>
         </div>

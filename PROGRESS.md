@@ -16,6 +16,7 @@
 - ✅ FAQ accordion section
 - ✅ Dark/light mode toggle
 - ✅ Live pricing API integration
+- ✅ Analytics integration
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -58,8 +59,8 @@ Document:
 
 ## Next Feature Ideas (Priority Order)
 1. Add dark/light mode toggle (DONE)
-2. Add live pricing API integration
-3. Add analytics
+2. Add live pricing API integration (DONE)
+3. Add analytics (DONE)
 4. Add multi-language support (i18n)
 
 ---
@@ -109,3 +110,12 @@ Document:
 - Error state includes retry button for failed API calls
 - Savings percentage calculated dynamically from competitor vs our pricing
 - Browser test confirmed all three pricing categories render correctly with data
+- Analytics integration uses privacy-focused approach: no cookies, no personal data
+- AnalyticsProvider client component wraps children for route-based pageview tracking
+- usePathname from next/navigation tracks route changes automatically
+- Calculator tracking uses useEffect to avoid ref access during render (lint error fix)
+- FAQ click tracking includes question ID for granular analytics
+- Theme toggle tracking captures direction (to light or dark)
+- Form view tracking triggers once on component mount using useRef
+- Analytics API uses in-memory storage (resets on server restart - perfect for serverless)
+- API limits storage to last 1000 events to prevent memory issues

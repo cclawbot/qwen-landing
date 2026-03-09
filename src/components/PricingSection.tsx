@@ -53,6 +53,7 @@ function PricingTable({ models, category, categoryName }: {
   category: PricingCategory;
   categoryName: string;
 }) {
+
   const categoryColors: Record<PricingCategory, { text: string; dot: string }> = {
     flagship: { text: 'text-blue-400', dot: 'bg-blue-400' },
     standard: { text: 'text-purple-400', dot: 'bg-purple-400' },
@@ -118,7 +119,7 @@ function PricingTable({ models, category, categoryName }: {
                     {isAvailable ? (
                       <span className="font-bold text-blue-400 uppercase">Available Now</span>
                     ) : (
-                      'Standard'
+                      <span className="text-gray-500">Standard</span>
                     )}
                   </td>
                 </tr>
@@ -133,6 +134,12 @@ function PricingTable({ models, category, categoryName }: {
 
 export default function PricingSection() {
   const { data, loading, error, refetch } = usePricing();
+
+  const categoryNames: Record<PricingCategory, string> = {
+    flagship: 'Flagship / Thinking Models',
+    standard: 'Standard / Mid-tier',
+    lightweight: 'Lightweight / Fast',
+  };
 
   if (loading) {
     return (
@@ -169,17 +176,17 @@ export default function PricingSection() {
         <PricingTable 
           models={flagshipModels} 
           category="flagship" 
-          categoryName="Flagship / Thinking Models" 
+          categoryName={categoryNames.flagship}
         />
         <PricingTable 
           models={standardModels} 
           category="standard" 
-          categoryName="Standard / Mid-tier" 
+          categoryName={categoryNames.standard}
         />
         <PricingTable 
           models={lightweightModels} 
           category="lightweight" 
-          categoryName="Lightweight / Fast" 
+          categoryName={categoryNames.lightweight}
         />
       </div>
     </section>

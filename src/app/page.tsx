@@ -41,7 +41,7 @@ export default function Home() {
           Stop Overpaying for <br /> <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Thinking Models.</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-          Access Alibaba&apos;s Qwen 0728 architecture with <span className="text-white font-semibold">up to 99% savings</span> compared to GPT-5.4 Pro. Guaranteed supply for enterprise high-volume workloads.
+          Access Alibaba&apos;s Qwen 0728 architecture with up to 99% savings compared to GPT-5.4 Pro. Guaranteed supply for enterprise high-volume workloads.
         </p>
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <a href="#waitlist" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/20">

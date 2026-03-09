@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "@/lib/i18n";
+
 interface Testimonial {
   id: number;
   quote: string;
@@ -40,12 +42,14 @@ const testimonials: Testimonial[] = [
 ];
 
 export default function Testimonials() {
+  const { t } = useTranslation();
+
   return (
     <section id="testimonials" className="container mx-auto px-6 py-20">
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold mb-4">Trusted by Industry Leaders</h2>
+        <h2 className="text-3xl font-bold mb-4">{t("testimonials.title")}</h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Join hundreds of companies already saving millions with QwenResell
+          {t("testimonials.subtitle")}
         </p>
       </div>
 
