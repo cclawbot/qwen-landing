@@ -23,6 +23,7 @@
 - ✅ Integrations showcase section
 - ✅ Team section (founders + advisors)
 - ✅ Blog section (company updates & tutorials)
+- ✅ Trust/Security badges (SOC2, ISO 27001, GDPR, Enterprise SLA)
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -66,7 +67,7 @@ Document:
 ## Next Feature Ideas (Priority Order)
 1. Add newsletter signup (DONE)
 2. Add more landing page sections (blog, team, integrations showcase) - all DONE
-3. Add trust/security badges (SOC2, enterprise logos)
+3. Add trust/security badges (SOC2, enterprise logos) - DONE
 4. Add case studies section (detailed customer success stories)
 
 ---
@@ -180,3 +181,11 @@ Document:
 - Hover effects: scale-[1.02] and shadow-xl for interactivity
 - "use client" directive enables potential future interactivity (filtering, etc)
 - line-clamp-2 CSS truncates long titles/excerpts elegantly
+- Trust/Security badges add enterprise credibility early in the conversion funnel
+- 4 badges: SOC2 Type II, ISO 27001, GDPR Compliant, Enterprise SLA
+- Inline SVG icons - no external dependencies
+- Color-coded badges (blue/green/purple/orange) match brand palette
+- Section placed between Hero and How It Works for high visibility
+- Responsive grid: 2 cols mobile, 3 tablet, 4 desktop
+- hover:scale-[1.02] provides subtle interactive feedback
+- Static component (no "use client" needed) - server-rendered
