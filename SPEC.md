@@ -1,40 +1,51 @@
-# SPEC.md - Team Section Feature
+# SPEC.md - Blog Section Feature
 
 ## Feature Name
-Team Section - Show founders and advisors
+Blog Section - Company Updates & API Tutorials
 
 ## Business Requirement
-Add a team section to build trust by displaying company leadership and advisors. This provides social proof that the business is run by credible professionals.
+Add a blog section to the landing page to showcase company updates, API tutorials, and industry insights. This helps with SEO, establishes thought leadership, and provides valuable content to potential customers.
 
 ## Business Goal Alignment
-- **Goal**: Increase conversion rate by building trust
-- **Metric**: Trust signals on landing page
+- **SEO**: Fresh content improves search rankings
+- **Trust**: Educational content shows expertise
+- **Engagement**: Tutorial content can convert visitors to users
 
 ## In-Scope
-- Team section with 3-4 team members (founders/advisors)
-- Photo placeholder, name, role, and brief bio
-- Responsive grid layout (1 col mobile, 2 col tablet, 4 col desktop)
-- Placed between Integrations and Testimonials sections
+- Blog section component with 3 featured posts
+- Each post card shows: title, excerpt, date, category tag
+- Responsive grid layout (1/2/3 columns)
+- Category tags (Product Update, Tutorial, Industry)
+- Hover effects on cards for interactivity
+- Placed between Integrations and Team sections
+- "use client" directive for potential future interactivity
 
 ## Out-of-Scope
-- LinkedIn profile links
-- Real photos (using placeholders for now)
-- Multiple pages/filtering
+- Full blog post pages (single post navigation)
+- Blog API routes
+- CMS integration
+- Comments section
+- Social sharing buttons
 
 ## Technical Details
-- Static React component (server-side rendered)
-- Same card styling as other sections for visual consistency
-- Use inline SVG avatars or initials for placeholders
+- Static content (no API calls)
+- 3 sample blog posts with varied categories
+- Category tag colors: blue for Product Update, green for Tutorial, purple for Industry
+- Responsive: 1 col mobile, 2 col tablet, 3 col desktop
+- Uses existing card styling pattern from other sections
+- No external dependencies (inline styles/Tailwind)
 
 ## Implementation Plan
-1. Create `src/components/Team.tsx` component
-2. Add to page.tsx between Integrations and Testimonials
-3. Run quality checks
-4. Test in browser
+1. Create BlogSection component in src/components/BlogSection.tsx
+2. Add 3 sample blog posts with realistic content
+3. Import and add to page.tsx between Integrations and Team
+4. Run lint, type-check, build
+5. E2E browser test
+6. Commit and push
 
-## Design
-- Card-based layout matching existing section styles
-- Avatar: circular with gradient background + initials
-- Role in accent color (blue-400 for founders, purple-400 for advisors)
-- Brief one-line bio in secondary text color
-- Hover effect: subtle scale
+## Visual Design
+- Section title: "Latest Updates & Tutorials"
+- Subtitle: "Insights from the QwenResell team"
+- Cards: title, 2-line excerpt, date, category tag
+- Hover: scale and shadow effect
+- Category tags: pill-shaped badges with category-specific colors

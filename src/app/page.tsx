@@ -8,6 +8,7 @@ import FAQ from "@/components/FAQ";
 import ThemeToggle from "@/components/ThemeToggle";
 import Newsletter from "@/components/Newsletter";
 import Integrations from "@/components/Integrations";
+import BlogSection from "@/components/BlogSection";
 import HowItWorks from "@/components/HowItWorks";
 import Team from "@/components/Team";
 
@@ -89,6 +90,9 @@ export default function Home() {
 
       {/* Integrations Section */}
       <Integrations />
+
+      {/* Blog Section */}
+      <BlogSection />
 
       {/* Team Section */}
       <Team />
