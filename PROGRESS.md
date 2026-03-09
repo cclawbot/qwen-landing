@@ -22,6 +22,7 @@
 - ✅ Newsletter signup
 - ✅ Integrations showcase section
 - ✅ Team section (founders + advisors)
+- ✅ Blog section (company updates & tutorials)
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -64,10 +65,9 @@ Document:
 
 ## Next Feature Ideas (Priority Order)
 1. Add newsletter signup (DONE)
-2. Add more landing page sections (blog, team, integrations showcase) - integrations DONE, How It Works DONE
-3. Add blog section (company updates, API tutorials)
-4. Add team section (founders, advisors)
-5. Add trust/security badges (SOC2, enterprise logos)
+2. Add more landing page sections (blog, team, integrations showcase) - all DONE
+3. Add trust/security badges (SOC2, enterprise logos)
+4. Add case studies section (detailed customer success stories)
 
 ---
 
@@ -171,3 +171,12 @@ Document:
 - Gradient avatars use initials - blue for founders, purple for advisors
 - Section placed between Integrations and Testimonials for good flow
 - Responsive grid: 1 col mobile, 2 col tablet, 4 col desktop
+
+- Blog section adds SEO-friendly content with company updates and tutorials
+- 3 sample posts: Product Update (blue), Tutorial (green), Industry (purple)
+- Category tags use Tailwind color classes matching brand palette
+- Section placed between Integrations and Team - good flow from tools to content to people
+- Responsive grid: 1 col mobile, 2 col tablet, 3 col desktop
+- Hover effects: scale-[1.02] and shadow-xl for interactivity
+- "use client" directive enables potential future interactivity (filtering, etc)
+- line-clamp-2 CSS truncates long titles/excerpts elegantly
