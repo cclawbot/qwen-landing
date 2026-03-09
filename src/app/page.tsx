@@ -19,6 +19,7 @@ import StatsSection from "@/components/StatsSection";
 import BackToTop from "@/components/BackToTop";
 import EnhancedFooter from "@/components/EnhancedFooter";
 import ScrollProgress from "@/components/ScrollProgress";
+import VideoDemo from "@/components/VideoDemo";
 import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
@@ -69,6 +70,9 @@ export default function Home() {
           </a>
         </div>
       </header>
+
+      {/* Video Demo Section */}
+      <VideoDemo />
 
       {/* Trust Badges Section */}
       <TrustBadges />

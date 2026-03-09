@@ -1,51 +1,52 @@
-# Feature: Customer Logo Ticker
+# Feature: Video Demo Section
 
 ## Description
-Add an animated horizontal ticker of customer/partner logos to provide social proof. Logos scroll continuously in a loop to show enterprise customers without taking much vertical space.
+Add a video demo section that showcases the QwenResell product in action. Includes a placeholder for product demo with play button overlay, creating an engaging visual that can be replaced with an actual video later.
 
 ## Business Requirement
-Add visual social proof through scrolling customer logos to build trust and credibility with potential enterprise customers.
+Add visual product demonstration section to help potential customers understand the value proposition quickly through video content.
 
 ## Business Goal
-Increase conversion by showcasing trusted companies using QwenResell, reinforcing the product's legitimacy and enterprise readiness.
+Increase conversion by providing visual product walkthrough that demonstrates ease of use and enterprise capabilities.
 
 ## In-Scope
-- Horizontal scrolling logo animation (infinite loop)
-- 8-10 placeholder company logos with names
-- Smooth continuous scroll animation
-- Pause on hover for user readability
-- Responsive: fewer logos shown on mobile
-- Subtle section wrapper with heading
-- Placed between TrustBadges and StatsSection
+- Video demo section with placeholder thumbnail
+- Play button overlay that triggers video modal
+- Video modal with close button
+- Responsive: full-width on mobile, centered on desktop
+- Section placed between Hero and TrustBadges (high visibility)
+- Dark-themed section to make video pop
 
 ## Out-of-Scope
-- Real company logo images (use styled placeholders)
-- Video backgrounds
-- Click interactions on logos
+- Actual video file (placeholder only)
+- Video hosting/streaming
+- Autoplay functionality
 
 ## Technical Details
-- CSS animation (@keyframes) for horizontal scroll
-- Two identical logo rows that offset to create seamless loop
-- "use client" directive for hover interaction
+- Client component ("use client") for modal state
+- useState for modal open/close
+- Fixed position modal with backdrop blur
+- Inline SVG play button and close icons
 - Tailwind for styling
-- Animation: translateX from 0% to -50% (half width for seamless loop)
-- Duration: ~30 seconds for full loop
-- Pause on hover: animation-play-state: paused
+- Responsive padding and sizing
 
 ## Implementation Plan
-1. Create CustomerLogos component in /src/components/CustomerLogos.tsx
-2. Add to page.tsx between TrustBadges and StatsSection
-3. Test animation runs smoothly
-4. Test pause on hover works
+1. Create VideoDemo component in /src/components/VideoDemo.tsx
+2. Add to page.tsx between Hero and TrustBadges
+3. Test play button opens modal
+4. Test close button/click outside closes modal
 5. Run lint, type-check, build
+6. E2E browser test
 
 ## Acceptance Criteria
-- [ ] Logos scroll horizontally in infinite loop
-- [ ] Animation pauses when user hovers
-- [ ] Section has heading "Trusted by Leading Enterprises"
-- [ ] 8-10 company logos displayed
-- [ ] Responsive: shows fewer logos on mobile
+- [ ] Section has heading "See QwenResell in Action"
+- [ ] Video thumbnail placeholder with play button overlay
+- [ ] Clicking play opens modal
+- [ ] Modal has close button
+- [ ] Clicking backdrop closes modal
+- [ ] Escape key closes modal
+- [ ] Responsive design works on mobile/desktop
 - [ ] Lint passes
 - [ ] Type-check passes
 - [ ] Build passes
-- [ ] Browser test confirms animation visible
+- [ ] Browser test confirms section renders
