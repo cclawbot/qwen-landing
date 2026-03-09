@@ -17,6 +17,7 @@ import TrustBadges from "@/components/TrustBadges";
 import StatsSection from "@/components/StatsSection";
 import BackToTop from "@/components/BackToTop";
 import EnhancedFooter from "@/components/EnhancedFooter";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -26,6 +27,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress />
+
       {/* Header */}
       <nav className="container mx-auto px-6 py-8 flex justify-between items-center">
         <div className="text-2xl font-bold tracking-tighter flex items-center gap-2">
