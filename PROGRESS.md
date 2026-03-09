@@ -17,6 +17,7 @@
 - ✅ Dark/light mode toggle
 - ✅ Live pricing API integration
 - ✅ Analytics integration
+- ✅ Multi-language support (i18n)
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -119,3 +120,12 @@ Document:
 - Form view tracking triggers once on component mount using useRef
 - Analytics API uses in-memory storage (resets on server restart - perfect for serverless)
 - API limits storage to last 1000 events to prevent memory issues
+- i18n using React Context - LanguageProvider wraps app in layout.tsx
+- useTranslation hook provides t() function for easy key-based translations
+- Translations stored inline in index.tsx for simplicity (no external JSON files needed)
+- Language dropdown with flag emojis for visual identification (EN/US, ZH/CN, ES)
+- Language preference persisted in localStorage with key "language"
+- Fallback to English when translation key not found
+- Always provide context value (even before mount) to avoid SSR hydration errors
+- Components use "use client" directive to enable useTranslation hook
+- ESLint warns about setState in useEffect - disabled with eslint-disable for localStorage hydration pattern
