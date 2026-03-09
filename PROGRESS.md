@@ -21,6 +21,7 @@
 - ✅ SEO optimization (OpenGraph, Twitter Cards, JSON-LD)
 - ✅ Newsletter signup
 - ✅ Integrations showcase section
+- ✅ Team section (founders + advisors)
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -165,3 +166,8 @@ Document:
 - Inline SVG icons match color scheme (blue/purple/green for each step)
 - Responsive grid: stacks on mobile, 3 columns on desktop
 - Section uses same card styling as other sections for visual consistency
+
+- Team section adds social proof with 4 team members (2 founders, 2 advisors)
+- Gradient avatars use initials - blue for founders, purple for advisors
+- Section placed between Integrations and Testimonials for good flow
+- Responsive grid: 1 col mobile, 2 col tablet, 4 col desktop
