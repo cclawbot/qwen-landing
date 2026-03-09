@@ -10,11 +10,11 @@ const PRICING = {
     "Claude Sonnet 4.6": { input: 3.0, output: 15.0 },
     "GPT-5.1": { input: 1.25, output: 10.0 },
     "Claude Haiku 4.5": { input: 1.0, output: 5.0 },
-    "GPT-5 Nano": { input: 0.05, output: 0.4 },
+    "GPT-5 Mini": { input: 0.25, output: 2.0 },
   },
   qwen: {
-    input: 0.26,
-    output: 0.78,
+    input: 0.40,
+    output: 1.60,
   },
 };
 
@@ -30,7 +30,7 @@ const competitorOptions: CompetitorModel[] = [
   { name: "Claude Sonnet 4.6", input: 3.0, output: 15.0 },
   { name: "GPT-5.1", input: 1.25, output: 10.0 },
   { name: "Claude Haiku 4.5", input: 1.0, output: 5.0 },
-  { name: "GPT-5 Nano", input: 0.05, output: 0.4 },
+  { name: "GPT-5 Mini", input: 0.25, output: 2.0 },
 ];
 
 export default function PricingCalculator() {
