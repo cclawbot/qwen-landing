@@ -1,38 +1,37 @@
-# SPEC.md - Integrations Showcase Feature
+# SPEC.md - How It Works Section
 
 ## Feature Name
-Integrations Showcase Section
+How It Works Section
 
 ## Business Requirement
-Add a section showcasing tools and platforms that integrate with Qwen API. Display partner/ecosystem logos in a grid to build trust and demonstrate ecosystem maturity.
+Add a section explaining the 3-step process to get started with QwenResell. Clear onboarding explanation reduces friction and increases conversion.
 
 ## Business Goal Alignment
-- Build trust through social proof of ecosystem
-- Show potential customers their existing tools work with Qwen
-- Increase conversion by reducing integration concerns
+- Reduce onboarding friction by explaining the simple signup process
+- Build trust through transparency
+- Increase conversion by showing "it only takes 3 steps"
 
 ## In-Scope
-- Integrations showcase component with logo grid
-- Minimum 6 integration partners (popular dev tools)
-- Responsive grid layout (2 cols mobile, 3 cols tablet, 6 cols desktop)
+- "How It Works" section with 3 steps
+- Icons for each step (inline SVG)
+- Step numbers for visual progression
+- Brief description for each step
+- Responsive layout (1 col mobile, 3 cols desktop)
 - Dark/light mode theming
-- Use inline SVG placeholders for logos (no external dependencies)
-- Subtle hover effect on integration cards
 
 ## Out-of-Scope
-- Real partnership verification
-- Dynamic integration fetching from API
-- Integration detail pages
-- Animated logo marquee
+- Animated step progression
+- Interactive step-by-step wizard
+- Integration with actual signup flow
 
 ## Technical Details
-- Component: `Integrations.tsx` in `/src/components/`
-- Placement: Between Features and Testimonials sections
-- Styling: Match existing card design, grayscale logos with color on hover
+- Component: `HowItWorks.tsx` in `/src/components/`
+- Placement: Between Hero and Pricing Section (shows early in funnel)
+- Styling: Match existing section styling with cards
 - "use client" directive not needed (static component)
 
 ## Implementation Plan
-1. Create Integrations component with SVG logo grid
-2. Add to page.tsx between Features and Testimonials
+1. Create HowItWorks component with 3-step grid
+2. Add to page.tsx between Hero and PricingSection
 3. Test in browser
 4. Lint, type-check, build
