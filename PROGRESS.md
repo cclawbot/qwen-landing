@@ -32,6 +32,7 @@
 - ✅ Scroll progress indicator
 - ✅ Cookie consent banner with preferences modal
 - ✅ Customer logo ticker (animated scrolling logos)
+- ✅ Video demo section with modal
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -87,6 +88,20 @@ Document:
 - Feature size: Must be small enough for single logical change
 - Prefer multiple small commits over one large commit
 - Document lessons learned after each feature
+
+## Lessons Learned (March 9, 2026)
+- Video demo section adds visual product showcase with play button overlay
+- useState manages modal open/close state - simple boolean toggle
+- Escape key closes modal via useEffect with keydown listener
+- Click backdrop closes modal - check e.target === e.currentTarget
+- Modal uses fixed position with z-[100] to stay above all content
+- Backdrop blur effect via backdrop-blur-sm CSS class
+- Feature pills below video thumbnail reinforce key value props (5 min setup, enterprise secure, 99% savings)
+- Placed between Hero and TrustBadges - high visibility early in funnel
+- "use client" directive required for useState and useEffect hooks
+- Dark gradient background (var(--bg-primary) to var(--bg-secondary)) makes video section pop
+- Browser test confirmed: play button opens modal, close button closes modal, content renders correctly
+- All quality checks pass (lint, type-check, build)
 
 ## Lessons Learned (March 9, 2026)
 - Scroll progress indicator improves UX on long landing pages
