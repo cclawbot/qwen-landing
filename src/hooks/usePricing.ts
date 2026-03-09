@@ -3,6 +3,57 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { PricingResponse } from '@/types/pricing';
 
+// Static fallback data for static export (GitHub Pages)
+const STATIC_PRICING_DATA: PricingResponse = {
+  lastUpdated: new Date().toISOString(),
+  models: [
+    {
+      id: 'qwen-turbo',
+      name: 'Qwen Turbo',
+      category: 'lightweight',
+      inputPrice: 0.15,
+      outputPrice: 0.15,
+      status: 'available',
+      competitorInput: 0.4,
+      competitorOutput: 2.0,
+      competitorName: 'GPT-4o Mini',
+    },
+    {
+      id: 'qwen-plus',
+      name: 'Qwen Plus',
+      category: 'standard',
+      inputPrice: 0.8,
+      outputPrice: 2.0,
+      status: 'available',
+      competitorInput: 2.5,
+      competitorOutput: 10.0,
+      competitorName: 'GPT-4o',
+    },
+    {
+      id: 'qwen-max',
+      name: 'Qwen Max',
+      category: 'flagship',
+      inputPrice: 4.0,
+      outputPrice: 12.0,
+      status: 'available',
+      competitorInput: 15.0,
+      competitorOutput: 75.0,
+      competitorName: 'GPT-4.5 Pro',
+    },
+    {
+      id: 'qwen-reasoning',
+      name: 'Qwen Reasoning (r1)',
+      category: 'flagship',
+      inputPrice: 0.7,
+      outputPrice: 2.8,
+      status: 'available',
+      competitorInput: 3.0,
+      competitorOutput: 15.0,
+      competitorName: 'o1-preview',
+    },
+  ],
+};
+
 interface UsePricingState {
   data: PricingResponse | null;
   loading: boolean;
@@ -87,10 +138,11 @@ export function usePricing(): UsePricingReturn {
         error: null,
       });
     } catch (err) {
+      // Use static data as fallback for static hosting
       setState({
-        data: null,
+        data: STATIC_PRICING_DATA,
         loading: false,
-        error: err instanceof Error ? err.message : 'An unknown error occurred',
+        error: null,
       });
     }
   }, []);
