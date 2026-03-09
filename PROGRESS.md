@@ -24,6 +24,8 @@
 - ✅ Team section (founders + advisors)
 - ✅ Blog section (company updates & tutorials)
 - ✅ Trust/Security badges (SOC2, ISO 27001, GDPR, Enterprise SLA)
+- ✅ Case studies section (detailed customer success stories)
+- ✅ Interactive ROI calculator with business metrics
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -69,7 +71,7 @@ Document:
 2. Add more landing page sections (blog, team, integrations showcase) - all DONE
 3. Add trust/security badges (SOC2, enterprise logos) - DONE
 4. Add case studies section (detailed customer success stories) - DONE
-5. Add interactive ROI calculator with more metrics
+5. Add interactive ROI calculator with more metrics - DONE
 
 ---
 
@@ -79,6 +81,21 @@ Document:
 - Document lessons learned after each feature
 
 ## Lessons Learned (March 9, 2026)
+- ROI calculator complements pricing calculator with business-focused metrics
+- ROI shows: payback period, 3-year savings, efficiency gains, productivity value
+- Uses different inputs than pricing calculator: monthly spend, developer count, implementation cost
+- Calculates year-by-year savings with 15% annual competitor growth factored in
+- Payback period calculated as: implementation cost / monthly savings
+- 3-year savings includes implementation cost deduction from year 1
+- Productivity value: hours saved per year × $75/hr developer rate
+- Default efficiency gain: 30% (conservative estimate for AI-assisted development)
+- Placed between PricingCalculator and Features - good flow from cost to value
+- useMemo used for calculations - runs on input change, no unnecessary recalcs
+- Color-coded metrics: purple for primary (payback), green for savings, blue for efficiency
+- Formatted currency helper handles K/M suffixes for large numbers
+- CTA links to waitlist for detailed enterprise analysis
+- Browser test confirmed all input fields and ROI metrics render correctly
+- Build passed with no issues
 - Case studies add deeper social proof than testimonials with quantifiable metrics
 - Each case study includes: company name, industry, challenge, solution, and 2 key metrics
 - Industry color-coded tags (blue for SaaS, green for finance, purple for healthcare)
