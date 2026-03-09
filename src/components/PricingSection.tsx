@@ -76,6 +76,7 @@ function PricingTable({ models, category, categoryName }: {
               <th className="px-6 py-4">Model</th>
               <th className="px-6 py-4 text-right">Input (USD)</th>
               <th className="px-6 py-4 text-right">Output (USD)</th>
+              <th className="px-6 py-4 text-right">vs Competitor</th>
               <th className="px-6 py-4 text-center">Status</th>
             </tr>
           </thead>
@@ -121,6 +122,9 @@ function PricingTable({ models, category, categoryName }: {
                     ) : (
                       `$${model.outputPrice.toFixed(2)}`
                     )}
+                  </td>
+                  <td className="px-6 py-4 text-right text-sm" style={{ color: 'var(--text-secondary)' }}>
+                    {model.competitorName ? `vs ${model.competitorName}` : '-'}
                   </td>
                   <td className="px-6 py-4 text-center text-xs">
                     {isAvailable ? (
