@@ -65,6 +65,21 @@ const translationsData: Record<Language, Translations> = {
       title: "Trusted by Industry Leaders",
       subtitle: "Join 500+ companies already saving with QwenResell"
     },
+    newsletter: {
+      title: "Stay Updated",
+      subtitle: "Get the latest on Qwen pricing and API updates.",
+      placeholder: "Enter your email",
+      button: "Subscribe",
+      privacy: "We respect your privacy. Unsubscribe anytime.",
+      success: {
+        title: "You're in!",
+        message: "Thanks for subscribing. We'll send updates to your inbox."
+      },
+      errors: {
+        emailRequired: "Email is required",
+        invalidEmail: "Please enter a valid email"
+      }
+    },
     faq: {
       title: "Frequently Asked Questions",
       subtitle: "Everything you need to know about QwenResell",
@@ -147,6 +162,21 @@ const translationsData: Record<Language, Translations> = {
       title: "行业领导者信赖",
       subtitle: "已有500+家公司通过QwenResell节省成本"
     },
+    newsletter: {
+      title: "保持更新",
+      subtitle: "获取最新的Qwen定价和API更新。",
+      placeholder: "输入您的邮箱",
+      button: "订阅",
+      privacy: "我们尊重您的隐私。可随时取消订阅。",
+      success: {
+        title: "订阅成功!",
+        message: "感谢订阅。我们会向您的邮箱发送更新。"
+      },
+      errors: {
+        emailRequired: "请输入邮箱",
+        invalidEmail: "请输入有效的邮箱地址"
+      }
+    },
     faq: {
       title: "常见问题",
       subtitle: "关于QwenResell您需要了解的一切",
@@ -228,6 +258,21 @@ const translationsData: Record<Language, Translations> = {
     testimonials: {
       title: "Empresas Líderes Confían en Nosotros",
       subtitle: "Únete a más de 500 empresas ya ahorrando con QwenResell"
+    },
+    newsletter: {
+      title: "Mantente Actualizado",
+      subtitle: "Recibe las últimas noticias sobre precios de Qwen y actualizaciones de API.",
+      placeholder: "Ingresa tu email",
+      button: "Suscribirse",
+      privacy: "Respetamos tu privacidad. Cancela cuando quieras.",
+      success: {
+        title: "¡Estás dentro!",
+        message: "Gracias por suscribirte. Te enviaremos actualizaciones a tu bandeja."
+      },
+      errors: {
+        emailRequired: "El email es requerido",
+        invalidEmail: "Por favor ingresa un email válido"
+      }
     },
     faq: {
       title: "Preguntas Frecuentes",

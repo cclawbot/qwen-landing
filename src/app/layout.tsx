@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AnalyticsProvider } from "@/components/AnalyticsProvider";
+import { LanguageProvider } from "@/lib/i18n";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -204,7 +205,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} antialiased`}>
-        <AnalyticsProvider>{children}</AnalyticsProvider>
+        <AnalyticsProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </AnalyticsProvider>
       </body>
     </html>
   );
