@@ -15,6 +15,7 @@ import Team from "@/components/Team";
 import CaseStudies from "@/components/CaseStudies";
 import TrustBadges from "@/components/TrustBadges";
 import StatsSection from "@/components/StatsSection";
+import BackToTop from "@/components/BackToTop";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -124,6 +125,9 @@ export default function Home() {
 
       {/* Contact Form */}
       <ContactForm />
+
+      {/* Back to Top Button */}
+      <BackToTop />
 
       {/* Footer */}
       <footer className="border-t py-12" style={{ borderColor: 'var(--border-color)' }}>

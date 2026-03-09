@@ -1,43 +1,43 @@
-# Feature: Animated Statistics Counters
+# Feature: Back to Top Button
 
 ## Description
-Add a statistics section with animated number counters that increment from 0 to their target value when scrolled into view.
+Add a floating "Back to Top" button that appears when the user scrolls down the page and smoothly scrolls to the top when clicked.
 
 ## Business Requirement
-Display key metrics (tokens served, enterprises, uptime, etc.) with animated counters to build credibility and social proof.
+Improve user navigation on long landing pages by providing an easy way to return to the top without manual scrolling.
 
 ## Business Goal
-Increase conversion by showing tangible proof of platform success - "if X other companies trust us, you can too."
+Enhance user experience and reduce friction for users who want to revisit the hero section or navigation.
 
 ## In-Scope
-- Animated counter component with count-up animation
-- Intersection Observer to trigger animation when visible
-- 4 key metrics: Tokens Served, Enterprise Clients, Uptime %, Support Response Time
-- Smooth easing animation (ease-out)
-- Responsive layout (2x2 grid on mobile, 4x1 on desktop)
+- Floating button fixed to bottom-right corner
+- Appears only after scrolling past hero (200px threshold)
+- Smooth scroll-to-top animation
+- Hover effect for visual feedback
+- Dark/light mode compatible
+- Mobile-friendly (larger touch target)
 
 ## Out-of-Scope
-- Real-time data from API (static values for now)
-- Additional metrics beyond the 4 defined
+- Keyboard shortcut (not needed for MVP)
+- Configurable position (always bottom-right)
 
 ## Technical Details
-- Client component ("use client") for animation
-- useEffect + IntersectionObserver for scroll detection
-- useState for animated value, useRef for animation frame
-- RequestAnimationFrame for smooth 60fps animation
-- CSS transition on the final value
+- Client component ("use client") for scroll detection
+- useState for visibility state
+- useEffect to track scroll position
+- CSS transition for fade in/out
+- window.scrollTo({ top: 0, behavior: 'smooth' }) for animation
 
 ## Implementation Plan
-1. Create StatsSection component in /src/components/StatsSection.tsx
-2. Add to page.tsx between TrustBadges and HowItWorks
-3. Test animation triggers on scroll
-4. Verify responsive layout
+1. Create BackToTop component in /src/components/BackToTop.tsx
+2. Add to page.tsx (inside main content, at the end before footer)
+3. Test scroll threshold and click behavior
 
 ## Acceptance Criteria
-- [ ] Four metric cards render with labels and values
-- [ ] Numbers animate from 0 to target when scrolled into view
-- [ ] Animation only triggers once (not on every scroll)
-- [ ] Responsive: 2x2 grid mobile, 4 columns desktop
+- [ ] Button hidden initially (above fold)
+- [ ] Button appears after scrolling 200px+
+- [ ] Button scrolls smoothly to top when clicked
+- [ ] Hover effect provides visual feedback
 - [ ] Dark/light mode compatible
 - [ ] Lint passes
 - [ ] Type-check passes
