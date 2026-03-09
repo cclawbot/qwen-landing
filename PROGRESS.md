@@ -149,3 +149,8 @@ Document:
 - Error state shows red border on input with error message below
 - Touched state tracks if user has focused field (validates on blur)
 - Privacy note below button: "We respect your privacy. Unsubscribe anytime."
+- Integrations showcase adds social proof of ecosystem compatibility
+- 12 partner logos in responsive grid (2/3/6 cols for mobile/tablet/desktop)
+- Placeholder colored initials used instead of external SVG logos (no dependencies)
+- Hover scale-105 effect on cards for visual feedback
+- Component placed between Features and Testimonials for good flow
