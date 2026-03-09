@@ -18,6 +18,7 @@ import StatsSection from "@/components/StatsSection";
 import BackToTop from "@/components/BackToTop";
 import EnhancedFooter from "@/components/EnhancedFooter";
 import ScrollProgress from "@/components/ScrollProgress";
+import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -133,6 +134,9 @@ export default function Home() {
 
       {/* Back to Top Button */}
       <BackToTop />
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
 
       {/* Enhanced Footer */}
       <EnhancedFooter />

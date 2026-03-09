@@ -1,45 +1,51 @@
-# Feature: Scroll Progress Indicator
+# Feature: Cookie Consent Banner
 
 ## Description
-Add a visual progress bar at the top of the page that indicates how far the user has scrolled down the landing page.
+Add a cookie consent banner at the bottom of the page that allows users to accept or reject non-essential cookies, with preference persistence.
 
 ## Business Requirement
-Enhance user experience by providing visual feedback on page scroll position, helping users understand their progress through the long landing page.
+Ensure GDPR/compliance with cookie consent requirements while providing a good user experience. Users should be able to manage their cookie preferences.
 
 ## Business Goal
-Improve user engagement and navigation on the content-rich landing page.
+Build trust through transparency and comply with privacy regulations without blocking essential functionality.
 
 ## In-Scope
-- Fixed position progress bar at top of viewport
-- Shows percentage of page scrolled (0-100%)
-- Smooth width transition as user scrolls
-- Resets when page is at top
-- Thin, non-intrusive design
+- Fixed bottom banner with cookie policy notice
+- "Accept All" and "Reject All" buttons
+- "Preferences" link for granular control
+- Preferences modal with toggle switches (Essential, Analytics, Marketing)
+- localStorage persistence for user consent
+- Smooth fade-in animation on first visit
+- No banner shown if user already consented
 
 ## Out-of-Scope
-- Reading time estimate
-- Chapter/section markers
-- Click to jump to section
+- Cookie scanning/auto-detection
+- Cookie policy detailed page
+- Consent history/log
 
 ## Technical Details
-- "use client" directive for scroll event handling
-- useState for scroll percentage
-- useEffect for scroll event listener
-- Fixed position at top with z-index above other content
-- Gradient color matching brand (purple)
-- Height: 3px for subtle appearance
+- "use client" directive for localStorage and UI interaction
+- useState for modal open/close state
+- useState for consent preferences (analytics, marketing toggles)
+- useEffect for checking localStorage on mount
+- Fixed position at bottom with z-index
+- CSS transition for fade in/out
+- localStorage key: "cookie_consent"
 
 ## Implementation Plan
-1. Create ScrollProgress component in /src/components/ScrollProgress.tsx
-2. Add to page.tsx at the top of the main content wrapper
-3. Test scroll behavior
+1. Create CookieConsent component in /src/components/CookieConsent.tsx
+2. Add to page.tsx before EnhancedFooter
+3. Test banner appears on first visit
+4. Test preferences modal functionality
+5. Test localStorage persistence
 
 ## Acceptance Criteria
-- [ ] Progress bar appears at top of viewport
-- [ ] Width updates smoothly as user scrolls
-- [ ] Shows 0% at top, 100% at bottom
-- [ ] Thin, non-intrusive appearance
-- [ ] Matches brand purple color scheme
+- [ ] Banner appears on first visit (no localStorage)
+- [ ] Accept All saves full consent and hides banner
+- [ ] Reject All saves minimal consent and hides banner
+- [ ] Preferences button opens modal with toggles
+- [ ] Saving preferences hides banner
+- [ ] Banner does NOT appear on return visits after consent
 - [ ] Lint passes
 - [ ] Type-check passes
 - [ ] Build passes

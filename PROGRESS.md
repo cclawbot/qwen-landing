@@ -84,6 +84,17 @@ Document:
 - Document lessons learned after each feature
 
 ## Lessons Learned (March 9, 2026)
+- Scroll progress indicator improves UX on long landing pages
+- useState tracks scroll percentage, useEffect adds scroll listener with passive: true
+- CSS transition on width for smooth progress animation
+- Fixed position at top with z-[60] to stay above most content
+- Purple gradient matching brand colors (linear-gradient from #8b5cf6 to #a855f7)
+- aria attributes for accessibility compliance (role="progressbar", aria-valuenow/min/max)
+- "use client" directive required for scroll event handling
+- Initial calculation runs in useEffect to set starting position
+- Cleanup removes scroll listener on unmount
+- All quality checks pass (lint, type-check, build)
+- Browser test confirmed progress bar renders and updates on scroll
 - Back to Top button improves UX on long landing pages
 - useState tracks visibility (scrollY > 200), useEffect adds scroll listener
 - CSS transition on opacity/transform for smooth fade in/out
