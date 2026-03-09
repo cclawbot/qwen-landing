@@ -26,6 +26,7 @@
 - ✅ Trust/Security badges (SOC2, ISO 27001, GDPR, Enterprise SLA)
 - ✅ Case studies section (detailed customer success stories)
 - ✅ Interactive ROI calculator with business metrics
+- ✅ Animated statistics counters section
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -105,6 +106,16 @@ Document:
 - Hover effects: scale-[1.02] and shadow-xl - consistent with Blog section styling
 - Placed between Team and Testimonials - good flow from people to success stories to social proof
 - Browser test confirmed all 3 case study cards render with correct data
+- Animated statistics counters add social proof with key metrics (2B+ tokens, 500+ enterprises, 99.99% uptime, 15min support)
+- Uses IntersectionObserver to trigger count-up animation when scrolled into view
+- Two separate useRef flags: one per counter for individual animation, one for section-level analytics tracking
+- Animation runs via setInterval over 2000ms with 60 steps for smooth 60fps count-up
+- Numbers display with suffix (B+, %, min) and handle decimals for uptime (99.99)
+- Values show as 0 before scroll - expected behavior, animation triggers on visibility
+- Placed between TrustBadges and HowItWorks - good flow from security credibility to stats to onboarding steps
+- Gradient text (purple-500 to purple-700) matches brand styling used elsewhere
+- Responsive grid: 2 cols mobile, 4 cols desktop - adapts cleanly
+- "use client" directive required for animation state and IntersectionObserver
 
 ## Lessons Learned (March 8, 2026)
 - Pricing calculator using `useMemo` for real-time calculation works well
