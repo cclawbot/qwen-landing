@@ -1,90 +1,92 @@
-# Feature SPEC: Multi-Language Support (i18n)
+# Feature SPEC: SEO Optimization
 
 ## Feature Name
-Multi-language support (i18n)
+SEO Optimization
 
 ## Business Requirement
-Add support for multiple languages (English, Spanish, Chinese) to the landing page to serve international customers.
+Add comprehensive SEO meta tags, OpenGraph tags, Twitter cards, and structured data to improve search visibility and social sharing.
 
 ## Business Goal Alignment
-- Expand market reach to non-English speaking customers
-- Improve conversion rates for international B2B buyers
-- Zero external dependencies (lightweight i18n implementation)
+- Improve organic search rankings with proper meta tags
+- Enable rich social previews when links are shared
+- Enhance credibility with structured data
+- Zero external dependencies (native Next.js SEO)
 
 ## In-Scope
-- Support English (default), Spanish, Chinese (Simplified)
-- Language switcher in header/navbar
-- Persist language choice in localStorage
-- Translate all visible text: hero, features, pricing, testimonials, FAQ, contact form, footer
+- OpenGraph meta tags (og:title, og:description, og:image, og:url, og:type)
+- Twitter Card meta tags (twitter:card, twitter:site, twitter:title, twitter:description, twitter:image)
+- JSON-LD structured data for Organization and FAQ
+- Canonical URL
+- Theme-color meta tag
+- Favicon and apple-touch-icon
+- Robots meta tag
 
 ## Out-of-Scope
-- RTL language support
-- Dynamic URL-based routing (/en/, /es/)
-- Server-side translation loading
-- External i18n libraries (next-intl, react-i18next)
+- Sitemap.xml generation
+- robots.txt
+- RSS feed
+- Blog/Article structured data (no blog yet)
+- Schema markup beyond Organization/FAQ
 
 ## Technical Details
 
 ### Implementation Approach
-1. **Translation JSON files** in `/src/lib/i18n/` - language key-value pairs
-2. **I18nContext** - React context for current language state
-3. **useTranslation hook** - Access translations in components
-4. **LanguageToggle component** - Dropdown/button in navbar
-5. **Wrap page content** - Use translation keys instead of hardcoded text
+1. Update layout.tsx with comprehensive metadata
+2. Add JSON-LD structured data script
+3. Create or update favicon files in public/
+4. Verify with browser devtools
 
-### File Structure
+### File Changes
 ```
-src/
-├── lib/i18n/
-│   ├── en.json
-│   ├── es.json
-│   └── zh.json
-├── context/
-│   └── I18nContext.tsx
-├── hooks/
-│   └── useTranslation.ts
-└── components/
-    └── LanguageToggle.tsx
+src/app/layout.tsx - Add SEO metadata and JSON-LD
+public/ - Add og-image.png, favicon.ico (if missing)
 ```
 
-### Translation Keys (sample)
-```json
-{
-  "nav.pricing": "Pricing",
-  "nav.features": "Features", 
-  "nav.waitlist": "Join Waitlist",
-  "hero.title": "Stop Overpaying for Thinking Models.",
-  "hero.subtitle": "Access Alibaba's Qwen 0728 architecture with up to 99% savings...",
-  "cta.joinWaitlist": "Join the Waitlist",
-  "cta.viewComparison": "View Comparison"
-}
+### Metadata Structure
+```typescript
+export const metadata: Metadata = {
+  metadataBase: new URL('https://qwenresell.com'),
+  title: {
+    default: 'QwenResell | Enterprise Qwen API Tokens',
+    template: '%s | QwenResell'
+  },
+  description: '...',
+  keywords: ['Qwen API', 'AI tokens', 'LLM pricing', 'Alibaba Qwen', ...],
+  authors: [{ name: 'QwenResell' }],
+  creator: 'QwenResell',
+  publisher: 'QwenResell',
+  robots: { index: true, follow: true },
+  openGraph: { ... },
+  twitter: { ... },
+  alternates: { canonical: 'https://qwenresell.com' },
+  verification: { ... },
+};
 ```
 
 ## Implementation Plan
 
-### Phase 1: Setup (10 min)
-1. Create translation JSON files (en, es, zh)
-2. Create I18nContext provider
-3. Create useTranslation hook
+### Phase 1: Metadata (15 min)
+1. Update layout.tsx with full metadata
+2. Add OpenGraph tags
+3. Add Twitter Card tags
 
-### Phase 2: Components (10 min)
-1. Create LanguageToggle component
-2. Add to navbar
-3. Wrap page.tsx with provider
+### Phase 2: Structured Data (10 min)
+1. Add Organization JSON-LD
+2. Add FAQ schema (from FAQ component)
 
-### Phase 3: Translation (15 min)
-1. Replace all hardcoded text in page.tsx with translation keys
-2. Translate components: PricingCalculator, ContactForm, Testimonials, FAQ
+### Phase 3: Assets (5 min)
+1. Verify/create og-image.png
+2. Verify/create favicon.ico
 
-### Phase 4: Polish (5 min)
-1. Add language persistence (localStorage)
-2. Test language switching
-3. Verify all text translates correctly
+### Phase 4: Verification (5 min)
+1. Run build to verify no errors
+2. Browser test - view page source
 
 ## Acceptance Criteria
-- [ ] Language toggle visible in navbar
-- [ ] Three languages available: EN, ES, ZH
-- [ ] Clicking language changes all visible text
-- [ ] Language preference persists on page reload
-- [ ] No layout shift when switching languages
-- [ ] All components translated (hero, features, pricing, testimonials, FAQ, contact, footer)
+- [ ] OpenGraph tags render correctly in page source
+- [ ] Twitter Card tags render correctly
+- [ ] JSON-LD structured data is valid (validate with schema.org)
+- [ ] Canonical URL is set
+- [ ] Favicon loads without 404
+- [ ] og:image shows when link shared on social
+- [ ] Build passes with no errors

@@ -1,7 +1,5 @@
 "use client";
 
-import { useTranslation } from "@/lib/i18n";
-
 interface Testimonial {
   id: number;
   quote: string;
@@ -42,36 +40,28 @@ const testimonials: Testimonial[] = [
 ];
 
 export default function Testimonials() {
-  const { t } = useTranslation();
-
   return (
-    <section id="testimonials" className="container mx-auto px-6 py-20">
+    <section className="container mx-auto px-6 py-20">
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold mb-4">{t("testimonials.title")}</h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          {t("testimonials.subtitle")}
-        </p>
+        <h2 className="text-3xl font-bold mb-4">Trusted by Industry Leaders</h2>
+        <p style={{ color: 'var(--text-secondary)' }}>Join 500+ companies already saving with QwenResell</p>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.id}
-            className="bg-[rgba(17,24,39,0.7)] rounded-2xl p-8 border border-[rgba(255,255,255,0.1)] backdrop-blur-xl hover:border-blue-500/30 transition-colors"
+            className="p-8 rounded-2xl border backdrop-blur-xl hover:border-blue-500/30 transition-colors"
+            style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}
           >
             <div className="text-4xl text-blue-500 mb-4">&ldquo;</div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              {testimonial.quote}
-            </p>
+            <p className="mb-6 leading-relaxed" style={{ color: 'var(--text-primary)' }}>{testimonial.quote}</p>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
                 {testimonial.name.charAt(0)}
               </div>
               <div>
-                <div className="font-semibold text-white">{testimonial.name}</div>
-                <div className="text-sm text-gray-400">
-                  {testimonial.title}, {testimonial.company}
-                </div>
+                <div className="font-semibold" style={{ color: 'var(--text-primary)' }}>{testimonial.name}</div>
+                <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{testimonial.title}, {testimonial.company}</div>
               </div>
             </div>
           </div>

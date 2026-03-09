@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { trackThemeToggled } from "@/lib/analytics";
 
 function getInitialTheme(): "dark" | "light" {
@@ -18,14 +18,10 @@ function getInitialTheme(): "dark" | "light" {
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"dark" | "light">(() => getInitialTheme());
-  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // Apply theme class after initial render
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      document.body.classList.add(theme);
-    }
+    // Apply theme on mount
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
@@ -40,18 +36,18 @@ export default function ThemeToggle() {
     } catch {
       // localStorage not available
     }
-    document.body.classList.remove("dark", "light");
-    document.body.classList.add(newTheme);
+    
+    document.documentElement.setAttribute("data-theme", newTheme);
   };
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 border border-gray-700 dark:bg-gray-800 dark:border-gray-700 light:bg-gray-200 light:border-gray-300 transition-all"
+      className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 border border-gray-700 transition-all"
+      style={{ backgroundColor: 'var(--card-bg)' }}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (
-        // Sun icon (for switching to light)
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-5 h-5 text-yellow-400"
@@ -67,7 +63,6 @@ export default function ThemeToggle() {
           />
         </svg>
       ) : (
-        // Moon icon (for switching to dark)
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-5 h-5 text-gray-700"
