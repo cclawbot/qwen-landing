@@ -121,7 +121,13 @@ export function usePricing(): UsePricingReturn {
     setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await fetch('/api/pricing');
+      // Try API first, fall back to static JSON for GitHub Pages
+      let response = await fetch('/api/pricing');
+      
+      if (!response.ok) {
+        // Fallback to static JSON file
+        response = await fetch('/api/pricing.json');
+      }
       
       if (!response.ok) {
         throw new Error(`Failed to fetch pricing: ${response.statusText}`);
