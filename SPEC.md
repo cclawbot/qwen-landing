@@ -1,51 +1,50 @@
-# SPEC.md - Blog Section Feature
+# SPEC.md - Trust & Security Badges
 
 ## Feature Name
-Blog Section - Company Updates & API Tutorials
+Trust & Security Badges - Enterprise Credibility Indicators
 
 ## Business Requirement
-Add a blog section to the landing page to showcase company updates, API tutorials, and industry insights. This helps with SEO, establishes thought leadership, and provides valuable content to potential customers.
+Add a trust/security badges section to establish enterprise credibility. Display SOC2 compliance, security certifications, and enterprise partner logos to build trust with potential B2B customers.
 
 ## Business Goal Alignment
-- **SEO**: Fresh content improves search rankings
-- **Trust**: Educational content shows expertise
-- **Engagement**: Tutorial content can convert visitors to users
+- **Trust**: Security certifications signal enterprise-readiness
+- **Conversion**: B2B buyers need social proof before purchase
+- **Differentiation**: Stand out from competitors without compliance badges
 
 ## In-Scope
-- Blog section component with 3 featured posts
-- Each post card shows: title, excerpt, date, category tag
-- Responsive grid layout (1/2/3 columns)
-- Category tags (Product Update, Tutorial, Industry)
-- Hover effects on cards for interactivity
-- Placed between Integrations and Team sections
-- "use client" directive for potential future interactivity
+- Trust badges section component with 4-6 badge items
+- Display: SOC2 Type II, ISO 27001, Enterprise security, Data privacy
+- Responsive grid layout (2/3/4 columns)
+- Placed between Hero and How It Works sections (high visibility)
+- Clean badge design with icons and labels
+- Dark/light mode compatible
+- Static content (no API calls)
 
 ## Out-of-Scope
-- Full blog post pages (single post navigation)
-- Blog API routes
-- CMS integration
-- Comments section
-- Social sharing buttons
+- Clickable badges (linking to compliance pages)
+- Dynamic compliance status API
+- Enterprise logos section (covered by Integrations)
+- Third-party verification badges (Trustpilot, etc.)
 
 ## Technical Details
-- Static content (no API calls)
-- 3 sample blog posts with varied categories
-- Category tag colors: blue for Product Update, green for Tutorial, purple for Industry
-- Responsive: 1 col mobile, 2 col tablet, 3 col desktop
-- Uses existing card styling pattern from other sections
-- No external dependencies (inline styles/Tailwind)
+- Static component (no "use client" needed)
+- Inline SVG icons for each badge type
+- Responsive: 2 cols mobile, 3 cols tablet, 4 cols desktop
+- Uses existing color scheme and card styling
+- Subtle background to make badges pop
 
 ## Implementation Plan
-1. Create BlogSection component in src/components/BlogSection.tsx
-2. Add 3 sample blog posts with realistic content
-3. Import and add to page.tsx between Integrations and Team
+1. Create TrustBadges component in src/components/TrustBadges.tsx
+2. Add 4 trust/security badges with icons and descriptions
+3. Import and add to page.tsx between Hero and How It Works
 4. Run lint, type-check, build
 5. E2E browser test
 6. Commit and push
 
 ## Visual Design
-- Section title: "Latest Updates & Tutorials"
-- Subtitle: "Insights from the QwenResell team"
-- Cards: title, 2-line excerpt, date, category tag
-- Hover: scale and shadow effect
-- Category tags: pill-shaped badges with category-specific colors
+- Section title: "Enterprise-Grade Security"
+- Subtitle: "Your data is protected by industry-leading standards"
+- Badge items: icon + title + short description
+- Badges in pill/rectangle containers with subtle borders
+- Grid layout with consistent spacing
+- Background: slightly different from page background for emphasis
