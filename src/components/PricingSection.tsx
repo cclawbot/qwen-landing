@@ -14,15 +14,15 @@ function PricingSkeleton() {
     <div className="space-y-16">
       {[1, 2, 3].map((category) => (
         <div key={category}>
-          <div className="h-6 w-48 bg-gray-800 animate-pulse rounded mb-6"></div>
-          <div className="bg-[rgba(17,24,39,0.7)] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.1)]">
+          <div className="h-6 w-48 rounded mb-6 animate-pulse" style={{ backgroundColor: 'var(--text-secondary)', opacity: 0.3 }}></div>
+          <div className="rounded-2xl overflow-hidden border" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
             <div className="p-6 space-y-4">
               {[1, 2, 3].map((row) => (
                 <div key={row} className="flex justify-between">
-                  <div className="h-6 w-32 bg-gray-800 animate-pulse rounded"></div>
-                  <div className="h-6 w-24 bg-gray-800 animate-pulse rounded"></div>
-                  <div className="h-6 w-24 bg-gray-800 animate-pulse rounded"></div>
-                  <div className="h-6 w-20 bg-gray-800 animate-pulse rounded"></div>
+                  <div className="h-6 w-32 rounded animate-pulse" style={{ backgroundColor: 'var(--text-secondary)', opacity: 0.3 }}></div>
+                  <div className="h-6 w-24 rounded animate-pulse" style={{ backgroundColor: 'var(--text-secondary)', opacity: 0.3 }}></div>
+                  <div className="h-6 w-24 rounded animate-pulse" style={{ backgroundColor: 'var(--text-secondary)', opacity: 0.3 }}></div>
+                  <div className="h-6 w-20 rounded animate-pulse" style={{ backgroundColor: 'var(--text-secondary)', opacity: 0.3 }}></div>
                 </div>
               ))}
             </div>
@@ -36,11 +36,12 @@ function PricingSkeleton() {
 function PricingError({ message, onRetry }: { message: string; onRetry: () => void }) {
   return (
     <div className="text-center py-12">
-      <div className="text-red-400 mb-4 text-lg">Failed to load pricing</div>
-      <p className="text-gray-500 mb-6">{message}</p>
+      <div className="mb-4 text-lg" style={{ color: '#ef4444' }}>Failed to load pricing</div>
+      <p className="mb-6" style={{ color: 'var(--text-secondary)' }}>{message}</p>
       <button
         onClick={onRetry}
-        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+        className="px-6 py-3 rounded-lg font-medium transition-colors"
+        style={{ backgroundColor: 'var(--accent-blue)', color: 'white' }}
       >
         Try Again
       </button>
@@ -54,29 +55,31 @@ function PricingTable({ models, category, categoryName }: {
   categoryName: string;
 }) {
 
-  const categoryColors: Record<PricingCategory, { text: string; dot: string }> = {
-    flagship: { text: 'text-blue-400', dot: 'bg-blue-400' },
-    standard: { text: 'text-purple-400', dot: 'bg-purple-400' },
-    lightweight: { text: 'text-green-400', dot: 'bg-green-400' },
+  const categoryColors: Record<PricingCategory, { textVar: string; bgVar: string }> = {
+    flagship: { textVar: 'var(--accent-blue)', bgVar: 'var(--accent-blue)' },
+    standard: { textVar: 'var(--accent-purple)', bgVar: 'var(--accent-purple)' },
+    lightweight: { textVar: 'var(--accent-green)', bgVar: 'var(--accent-green)' },
   };
+
+  const colors = categoryColors[category];
 
   return (
     <div>
-      <h3 className={`${categoryColors[category].text} font-semibold mb-6 flex items-center gap-2`}>
-        <span className={`w-2 h-2 ${categoryColors[category].dot} rounded-full`}></span>
+      <h3 className="font-semibold mb-6 flex items-center gap-2" style={{ color: colors.textVar }}>
+        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: colors.bgVar }}></span>
         {categoryName}
       </h3>
       <div className="overflow-x-auto">
-        <table className="w-full text-left bg-[rgba(17,24,39,0.7)] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.1)] backdrop-blur-xl">
+        <table className="w-full text-left rounded-2xl overflow-hidden border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
           <thead>
-            <tr className="border-b border-gray-800 text-gray-500 text-sm uppercase">
+            <tr className="border-b text-sm uppercase" style={{ borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}>
               <th className="px-6 py-4">Model</th>
               <th className="px-6 py-4 text-right">Input (USD)</th>
               <th className="px-6 py-4 text-right">Output (USD)</th>
               <th className="px-6 py-4 text-center">Status</th>
             </tr>
           </thead>
-          <tbody className="text-gray-300">
+          <tbody style={{ color: 'var(--text-primary)' }}>
             {models.map((model) => {
               const savings = calculateSavings(model.inputPrice, model.competitorInput);
               const isAvailable = model.status === 'available';
@@ -84,7 +87,11 @@ function PricingTable({ models, category, categoryName }: {
               return (
                 <tr 
                   key={model.id} 
-                  className={`border-b border-gray-800/50 ${isAvailable ? 'bg-[rgba(59,130,246,0.1)] text-white border-l-4 border-blue-500' : ''}`}
+                  className="border-b"
+                  style={{ 
+                    borderColor: 'var(--border-color)',
+                    backgroundColor: isAvailable ? 'var(--accent-blue-bg)' : 'transparent'
+                  }}
                 >
                   <td className="px-6 py-4 font-medium">{model.name}</td>
                   <td className="px-6 py-4 text-right">
@@ -92,7 +99,7 @@ function PricingTable({ models, category, categoryName }: {
                       <>
                         <span className="font-bold">${model.inputPrice.toFixed(2)}</span>
                         {savings && (
-                          <span className="ml-2 bg-[#064e3b] text-[#34d399] text-xs px-2 py-0.5 rounded-full">
+                          <span className="ml-2 text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: 'var(--accent-green-bg)', color: 'var(--accent-green)' }}>
                             {savings}
                           </span>
                         )}
@@ -106,7 +113,7 @@ function PricingTable({ models, category, categoryName }: {
                       <>
                         <span className="font-bold">${model.outputPrice.toFixed(2)}</span>
                         {model.competitorOutput && (
-                          <span className="ml-2 bg-[#064e3b] text-[#34d399] text-xs px-2 py-0.5 rounded-full">
+                          <span className="ml-2 text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: 'var(--accent-green-bg)', color: 'var(--accent-green)' }}>
                             {calculateSavings(model.outputPrice, model.competitorOutput)}
                           </span>
                         )}
@@ -117,9 +124,9 @@ function PricingTable({ models, category, categoryName }: {
                   </td>
                   <td className="px-6 py-4 text-center text-xs">
                     {isAvailable ? (
-                      <span className="font-bold text-blue-400 uppercase">Available Now</span>
+                      <span className="font-bold uppercase" style={{ color: colors.textVar }}>Available Now</span>
                     ) : (
-                      <span className="text-gray-500">Standard</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>Standard</span>
                     )}
                   </td>
                 </tr>

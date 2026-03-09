@@ -18,7 +18,7 @@ export default function Integrations() {
   ];
 
   return (
-    <section className="py-24" style={{ backgroundColor: 'rgba(30, 30, 30, 0.3)' }}>
+    <section className="py-24" style={{ backgroundColor: 'var(--bg-secondary)' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

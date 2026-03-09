@@ -53,36 +53,37 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="bg-gray-900/30 py-24">
+    <section id="faq" className="py-24" style={{ backgroundColor: 'var(--bg-secondary)' }}>
       <div className="container mx-auto px-6 max-w-3xl">
         <h2 className="text-3xl font-bold mb-4 text-center">Frequently Asked Questions</h2>
-        <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
+        <p className="text-center mb-12 max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
           Can&apos;t find the answer you&apos;re looking for?{" "}
-          <a href="#waitlist" className="text-blue-400 hover:text-blue-300">
+          <a href="#waitlist" style={{ color: 'var(--accent-blue)' }}>
             Contact us
           </a>.
         </p>
 
-        <div className="bg-[rgba(17,24,39,0.7)] rounded-2xl border border-[rgba(255,255,255,0.1)] backdrop-blur-xl overflow-hidden">
+        <div className="rounded-2xl border backdrop-blur-xl overflow-hidden" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
           <div className="p-2">
             {faqItems.map((item) => (
-              <div key={item.id} className="border-b border-gray-800 last:border-b-0">
+              <div key={item.id} className="border-b last:border-b-0" style={{ borderColor: 'var(--border-color)' }}>
                 <button
                   onClick={() => handleToggle(item.id)}
-                  className="w-full py-5 flex justify-between items-center text-left hover:text-blue-400 transition-colors group"
+                  className="w-full py-5 flex justify-between items-center text-left transition-colors group"
                   aria-expanded={openId === item.id}
                 >
-                  <span className="text-lg font-medium text-gray-200 group-hover:text-blue-400 transition-colors">
+                  <span className="text-lg font-medium transition-colors" style={{ color: 'var(--text-primary)' }}>
                     {item.question}
                   </span>
                   <span className="ml-4 flex-shrink-0">
                     <svg
-                      className={`w-5 h-5 text-gray-500 transform transition-transform duration-200 ${
+                      className={`w-5 h-5 transform transition-transform duration-200 ${
                         openId === item.id ? "rotate-45" : ""
                       }`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
+                      style={{ color: 'var(--text-secondary)' }}
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
@@ -93,7 +94,7 @@ export default function FAQ() {
                     openId === item.id ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="text-gray-400 pb-5 leading-relaxed">{item.answer}</p>
+                  <p className="pb-5 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{item.answer}</p>
                 </div>
               </div>
             ))}

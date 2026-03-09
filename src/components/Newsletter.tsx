@@ -50,7 +50,7 @@ export default function Newsletter({ onView, onSubmit }: NewsletterProps) {
 
   if (success) {
     return (
-      <section className="py-20" style={{ backgroundColor: 'rgba(30, 30, 30, 0.3)' }}>
+      <section className="py-20" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container mx-auto px-6">
           <div className="max-w-xl mx-auto text-center p-10 rounded-3xl border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
             <div className="text-5xl mb-4">✅</div>
@@ -63,7 +63,7 @@ export default function Newsletter({ onView, onSubmit }: NewsletterProps) {
   }
 
   return (
-    <section className="py-20" style={{ backgroundColor: 'rgba(30, 30, 30, 0.3)' }} id="newsletter">
+    <section className="py-20" style={{ backgroundColor: 'var(--bg-secondary)' }} id="newsletter">
       <div className="container mx-auto px-6">
         <div className="max-w-xl mx-auto text-center p-10 rounded-3xl border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
           <h3 className="text-2xl font-bold mb-3">{t("newsletter.title") || "Stay Updated"}</h3>
@@ -94,7 +94,8 @@ export default function Newsletter({ onView, onSubmit }: NewsletterProps) {
             
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/20"
+              className="w-full px-8 py-4 rounded-xl font-bold transition-all"
+              style={{ backgroundColor: 'var(--accent-blue)', color: 'white' }}
             >
               {t("newsletter.button") || "Subscribe"}
             </button>

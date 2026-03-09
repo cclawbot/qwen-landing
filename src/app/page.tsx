@@ -11,6 +11,7 @@ import Integrations from "@/components/Integrations";
 import BlogSection from "@/components/BlogSection";
 import HowItWorks from "@/components/HowItWorks";
 import Team from "@/components/Team";
+import CaseStudies from "@/components/CaseStudies";
 import TrustBadges from "@/components/TrustBadges";
 
 export const metadata: Metadata = {
@@ -72,20 +73,20 @@ export default function Home() {
       <PricingCalculator />
 
       {/* Features Section */}
-      <section className="py-24" style={{ backgroundColor: 'rgba(30, 30, 30, 0.3)' }}>
+      <section className="py-24" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
           <div className="p-8 rounded-3xl border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
-            <div className="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center mx-auto mb-6 text-blue-400 text-2xl font-bold">🛡️</div>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold" style={{ backgroundColor: 'var(--accent-blue-bg)', color: 'var(--accent-blue)' }}>🛡️</div>
             <h4 className="text-xl font-bold mb-4">Guaranteed Supply</h4>
             <p style={{ color: 'var(--text-secondary)' }}>Direct partnership with Alibaba Cloud infrastructure. No rate-limit headaches or mid-tier outages.</p>
           </div>
           <div className="p-8 rounded-3xl border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
-            <div className="w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center mx-auto mb-6 text-purple-400 text-2xl font-bold">🚀</div>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold" style={{ backgroundColor: 'var(--accent-purple-bg)', color: 'var(--accent-purple)' }}>🚀</div>
             <h4 className="text-xl font-bold mb-4">High Volume Ready</h4>
             <p style={{ color: 'var(--text-secondary)' }}>Scaling to billions of tokens? Our infrastructure is built for B2B aggregators and agents.</p>
           </div>
           <div className="p-8 rounded-3xl border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
-            <div className="w-12 h-12 bg-green-600/20 rounded-xl flex items-center justify-center mx-auto mb-6 text-green-400 text-2xl font-bold">🏢</div>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold" style={{ backgroundColor: 'var(--accent-green-bg)', color: 'var(--accent-green)' }}>🏢</div>
             <h4 className="text-xl font-bold mb-4">Enterprise-Ready</h4>
             <p style={{ color: 'var(--text-secondary)' }}>SOC2 Type II compliant pipelines, custom SLA options, and localized data residency support.</p>
           </div>
@@ -100,6 +101,9 @@ export default function Home() {
 
       {/* Team Section */}
       <Team />
+
+      {/* Case Studies Section */}
+      <CaseStudies />
 
       {/* Testimonials Section */}
       <Testimonials />

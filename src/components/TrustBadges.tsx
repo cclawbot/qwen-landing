@@ -47,11 +47,11 @@ export default function TrustBadges() {
     }
   ];
 
-  const colorClasses: Record<string, { bg: string; text: string; border: string }> = {
-    blue: { bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/20" },
-    green: { bg: "bg-green-500/10", text: "text-green-400", border: "border-green-500/20" },
-    purple: { bg: "bg-purple-500/10", text: "text-purple-400", border: "border-purple-500/20" },
-    orange: { bg: "bg-orange-500/10", text: "text-orange-400", border: "border-orange-500/20" }
+  const colorClasses: Record<string, { bgVar: string; textVar: string }> = {
+    blue: { bgVar: "var(--accent-blue-bg)", textVar: "var(--accent-blue)" },
+    green: { bgVar: "var(--accent-green-bg)", textVar: "var(--accent-green)" },
+    purple: { bgVar: "var(--accent-purple-bg)", textVar: "var(--accent-purple)" },
+    orange: { bgVar: "var(--accent-orange-bg)", textVar: "var(--accent-orange)" }
   };
 
   return (
@@ -70,13 +70,13 @@ export default function TrustBadges() {
             return (
               <div
                 key={index}
-                className={`p-4 md:p-6 rounded-2xl border text-center transition-all hover:scale-[1.02] ${colors.bg}`}
+                className="p-4 md:p-6 rounded-2xl border text-center transition-all hover:scale-[1.02]"
                 style={{ 
                   backgroundColor: 'var(--card-bg)', 
                   borderColor: 'var(--border-color)' 
                 }}
               >
-                <div className={`mx-auto mb-3 ${colors.text}`}>
+                <div className="mx-auto mb-3" style={{ color: colors.textVar }}>
                   {badge.icon}
                 </div>
                 <h3 className="font-bold text-sm md:text-base mb-2">{badge.title}</h3>

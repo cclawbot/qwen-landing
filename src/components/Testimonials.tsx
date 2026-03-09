@@ -53,7 +53,7 @@ export default function Testimonials() {
             className="p-8 rounded-2xl border backdrop-blur-xl hover:border-blue-500/30 transition-colors"
             style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}
           >
-            <div className="text-4xl text-blue-500 mb-4">&ldquo;</div>
+            <div className="text-4xl mb-4" style={{ color: 'var(--accent-blue)' }}>&ldquo;</div>
             <p className="mb-6 leading-relaxed" style={{ color: 'var(--text-primary)' }}>{testimonial.quote}</p>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">

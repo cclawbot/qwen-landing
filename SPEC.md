@@ -1,50 +1,52 @@
-# SPEC.md - Trust & Security Badges
+# SPEC.md - Case Studies Section
 
 ## Feature Name
-Trust & Security Badges - Enterprise Credibility Indicators
+Case Studies Section - Detailed Customer Success Stories
 
 ## Business Requirement
-Add a trust/security badges section to establish enterprise credibility. Display SOC2 compliance, security certifications, and enterprise partner logos to build trust with potential B2B customers.
+Add a case studies section to provide detailed customer success stories with quantifiable results. This adds deeper social proof than testimonials by showing specific metrics, use cases, and business outcomes.
 
 ## Business Goal Alignment
-- **Trust**: Security certifications signal enterprise-readiness
-- **Conversion**: B2B buyers need social proof before purchase
-- **Differentiation**: Stand out from competitors without compliance badges
+- **Trust**: Detailed success stories with real metrics build credibility
+- **Conversion**: Case studies help prospects visualize ROI
+- **SEO**: Long-form content improves search engine visibility
 
 ## In-Scope
-- Trust badges section component with 4-6 badge items
-- Display: SOC2 Type II, ISO 27001, Enterprise security, Data privacy
-- Responsive grid layout (2/3/4 columns)
-- Placed between Hero and How It Works sections (high visibility)
-- Clean badge design with icons and labels
+- Case studies section with 3 detailed customer success stories
+- Each case study: company name, industry, challenge, solution, results (with metrics)
+- Metrics displayed prominently (cost savings %, time saved, etc.)
+- Responsive grid layout (1/2/3 columns)
+- Placed between Team and Testimonials sections
 - Dark/light mode compatible
 - Static content (no API calls)
 
 ## Out-of-Scope
-- Clickable badges (linking to compliance pages)
-- Dynamic compliance status API
-- Enterprise logos section (covered by Integrations)
-- Third-party verification badges (Trustpilot, etc.)
+- Interactive case study filters
+- Video case studies
+- Customer photos/headshots
+- Dynamic case study API
+- Full blog-style case study pages
 
 ## Technical Details
 - Static component (no "use client" needed)
-- Inline SVG icons for each badge type
-- Responsive: 2 cols mobile, 3 cols tablet, 4 cols desktop
+- Inline SVG icons for metrics
+- Responsive: 1 col mobile, 2 cols tablet, 3 cols desktop
 - Uses existing color scheme and card styling
-- Subtle background to make badges pop
+- Hover effects on cards for interactivity
 
 ## Implementation Plan
-1. Create TrustBadges component in src/components/TrustBadges.tsx
-2. Add 4 trust/security badges with icons and descriptions
-3. Import and add to page.tsx between Hero and How It Works
+1. Create CaseStudies component in src/components/CaseStudies.tsx
+2. Add 3 case studies with company, industry, challenge, solution, results
+3. Import and add to page.tsx between Team and Testimonials
 4. Run lint, type-check, build
 5. E2E browser test
 6. Commit and push
 
 ## Visual Design
-- Section title: "Enterprise-Grade Security"
-- Subtitle: "Your data is protected by industry-leading standards"
-- Badge items: icon + title + short description
-- Badges in pill/rectangle containers with subtle borders
-- Grid layout with consistent spacing
+- Section title: "Success Stories"
+- Subtitle: "See how enterprises are saving with QwenResell"
+- Cards with: Company name, industry tag, challenge summary, solution summary, key metrics
+- Metrics shown as large numbers with labels (e.g., "92%", "$2.4M saved")
+- Industry tags use color coding
 - Background: slightly different from page background for emphasis
+- Hover: subtle scale and shadow increase

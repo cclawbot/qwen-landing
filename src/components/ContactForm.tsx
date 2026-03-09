@@ -130,39 +130,48 @@ export default function ContactForm() {
     }, 3000);
   };
 
-  const getFieldClass = (field: keyof FormData): string => {
-    const baseClass =
-      "w-full bg-gray-900 border rounded-xl px-6 py-4 focus:outline-none transition-all text-white placeholder-gray-500";
+  const getFieldStyle = (field: keyof FormData): React.CSSProperties => {
+    const baseStyle: React.CSSProperties = {
+      width: '100%',
+      borderRadius: '0.75rem',
+      padding: '1rem 1.5rem',
+      outline: 'none',
+      transition: 'all 0.2s',
+      backgroundColor: 'var(--bg-primary)',
+      color: 'var(--text-primary)',
+      border: '1px solid var(--border-color)',
+    };
+    
     if (touched[field] && errors[field]) {
-      return `${baseClass} border-red-500 focus:border-red-500`;
+      return { ...baseStyle, borderColor: '#ef4444' };
     }
     if (touched[field] && !errors[field]) {
-      return `${baseClass} border-green-500 focus:border-green-500`;
+      return { ...baseStyle, borderColor: 'var(--accent-green)' };
     }
-    return `${baseClass} border-gray-700 focus:border-blue-500`;
+    return { ...baseStyle, borderColor: 'var(--border-color)' };
   };
 
   return (
     <section id="waitlist" className="container mx-auto px-6 py-32 text-center">
-      <div className="max-w-3xl mx-auto bg-[rgba(17,24,39,0.7)] p-8 md:p-12 rounded-[2rem] border border-blue-500/30 backdrop-blur-xl">
+      <div className="max-w-3xl mx-auto p-8 md:p-12 rounded-[2rem] border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--accent-blue)', borderWidth: '1px' }}>
         {isSuccess ? (
           <div className="py-12">
-            <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'var(--accent-green-bg)' }}>
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--accent-green)' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-3xl font-bold mb-4 text-white">Message Sent!</h3>
+            <h3 className="text-3xl font-bold mb-4">Message Sent!</h3>
           </div>
         ) : (
           <>
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Ready for Sub-Dollar Pricing?</h2>
-            <p className="text-gray-400 mb-10">We are onboarding a limited number of B2B partners for Q2 2026.</p>
+            <p className="mb-10" style={{ color: 'var(--text-secondary)' }}>We are onboarding a limited number of B2B partners for Q2 2026.</p>
 
             <form onSubmit={handleSubmit} className="space-y-5 text-left">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                  Name <span className="text-red-400">*</span>
+                <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-primary)' }}>
+                  Name <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input
                   type="text"
@@ -171,17 +180,17 @@ export default function ContactForm() {
                   onChange={(e) => handleChange("name", e.target.value)}
                   onBlur={() => handleBlur("name")}
                   placeholder="John Doe"
-                  className={getFieldClass("name")}
+                  style={{ ...getFieldStyle("name"), color: 'var(--text-primary)' }}
                   disabled={isSubmitting}
                 />
                 {touched.name && errors.name && (
-                  <p className="mt-2 text-sm text-red-400">{errors.name}</p>
+                  <p className="mt-2 text-sm" style={{ color: '#ef4444' }}>{errors.name}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Email <span className="text-red-400">*</span>
+                <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-primary)' }}>
+                  Email <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input
                   type="email"
@@ -190,17 +199,17 @@ export default function ContactForm() {
                   onChange={(e) => handleChange("email", e.target.value)}
                   onBlur={() => handleBlur("email")}
                   placeholder="john@company.com"
-                  className={getFieldClass("email")}
+                  style={{ ...getFieldStyle("email"), color: 'var(--text-primary)' }}
                   disabled={isSubmitting}
                 />
                 {touched.email && errors.email && (
-                  <p className="mt-2 text-sm text-red-400">{errors.email}</p>
+                  <p className="mt-2 text-sm" style={{ color: '#ef4444' }}>{errors.email}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
-                  Company <span className="text-red-400">*</span>
+                <label htmlFor="company" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-primary)' }}>
+                  Company <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input
                   type="text"
@@ -209,20 +218,20 @@ export default function ContactForm() {
                   onChange={(e) => handleChange("company", e.target.value)}
                   onBlur={() => handleBlur("company")}
                   placeholder="Acme Inc."
-                  className={getFieldClass("company")}
+                  style={{ ...getFieldStyle("company"), color: 'var(--text-primary)' }}
                   disabled={isSubmitting}
                 />
                 {touched.company && errors.company && (
-                  <p className="mt-2 text-sm text-red-400">{errors.company}</p>
+                  <p className="mt-2 text-sm" style={{ color: '#ef4444' }}>{errors.company}</p>
                 )}
               </div>
 
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300">
+                  <label htmlFor="message" className="block text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
                     Message
                   </label>
-                  <span className="text-xs text-gray-500">{formData.message.length}/500</span>
+                  <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{formData.message.length}/500</span>
                 </div>
                 <textarea
                   id="message"
@@ -232,18 +241,19 @@ export default function ContactForm() {
                   placeholder="Tell us about your use case..."
                   rows={4}
                   maxLength={500}
-                  className={getFieldClass("message")}
+                  style={{ ...getFieldStyle("message"), color: 'var(--text-primary)' }}
                   disabled={isSubmitting}
                 />
                 {touched.message && errors.message && (
-                  <p className="mt-2 text-sm text-red-400">{errors.message}</p>
+                  <p className="mt-2 text-sm" style={{ color: '#ef4444' }}>{errors.message}</p>
                 )}
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-white text-black px-10 py-4 rounded-xl font-bold hover:bg-gray-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full px-10 py-4 rounded-xl font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                style={{ backgroundColor: 'var(--text-primary)', color: 'var(--bg-primary)' }}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
