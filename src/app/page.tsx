@@ -14,6 +14,7 @@ import HowItWorks from "@/components/HowItWorks";
 import Team from "@/components/Team";
 import CaseStudies from "@/components/CaseStudies";
 import TrustBadges from "@/components/TrustBadges";
+import StatsSection from "@/components/StatsSection";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -63,6 +64,9 @@ export default function Home() {
 
       {/* Trust Badges Section */}
       <TrustBadges />
+
+      {/* Stats Section */}
+      <StatsSection />
 
       {/* How It Works Section */}
       <HowItWorks />
