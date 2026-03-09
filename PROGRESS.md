@@ -60,10 +60,8 @@ Document:
 ---
 
 ## Next Feature Ideas (Priority Order)
-1. Add dark/light mode toggle (DONE)
-2. Add live pricing API integration (DONE)
-3. Add analytics (DONE)
-4. Add multi-language support (i18n)
+1. Add newsletter signup (DONE)
+2. Add more landing page sections (blog, team, integrations showcase)
 
 ---
 
@@ -140,3 +138,14 @@ Document:
 - Next.js automatically handles favicon.ico generation from SVG source
 - Always rebuild and restart server after metadata changes to see updated HTML
 - Next.js caches static pages - clear cache by rebuilding or using fresh server start
+- Newsletter signup adds lower-friction lead capture compared to full contact form
+- Email validation uses regex pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+- t() function returns key itself if translation not found - use || fallback for defaults
+- "use client" directive required for components using useTranslation hook
+- LanguageProvider was defined but NOT actually wrapping the app - added to layout.tsx
+- Newsletter placed between Testimonials and FAQ for good user flow
+- onView and onSubmit props allow analytics tracking integration
+- Success state shows checkmark and confirmation message after valid submission
+- Error state shows red border on input with error message below
+- Touched state tracks if user has focused field (validates on blur)
+- Privacy note below button: "We respect your privacy. Unsubscribe anytime."
