@@ -3,6 +3,7 @@ import "./globals.css";
 import PricingCalculator from "@/components/PricingCalculator";
 import ROICalculator from "@/components/ROICalculator";
 import PricingSection from "@/components/PricingSection";
+import FeatureComparison from "@/components/FeatureComparison";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
@@ -89,6 +90,9 @@ export default function Home() {
 
       {/* Pricing Section */}
       <PricingSection />
+
+      {/* Feature Comparison Table */}
+      <FeatureComparison />
 
       {/* Pricing Calculator */}
       <PricingCalculator />
