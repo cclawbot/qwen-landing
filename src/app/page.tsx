@@ -21,6 +21,7 @@ import EnhancedFooter from "@/components/EnhancedFooter";
 import ScrollProgress from "@/components/ScrollProgress";
 import VideoDemo from "@/components/VideoDemo";
 import CookieConsent from "@/components/CookieConsent";
+import FloatingCTA from "@/components/FloatingCTA";
 
 export const metadata: Metadata = {
   title: "QwenResell | Enterprise Qwen API Tokens",
@@ -145,6 +146,9 @@ export default function Home() {
 
       {/* Cookie Consent Banner */}
       <CookieConsent />
+
+      {/* Floating CTA */}
+      <FloatingCTA />
 
       {/* Enhanced Footer */}
       <EnhancedFooter />

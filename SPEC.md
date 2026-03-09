@@ -1,52 +1,50 @@
-# Feature: Video Demo Section
+# Feature: Floating CTA Button
 
 ## Description
-Add a video demo section that showcases the QwenResell product in action. Includes a placeholder for product demo with play button overlay, creating an engaging visual that can be replaced with an actual video later.
+Add a floating CTA button that appears when users scroll down the page, providing persistent access to join the waitlist. This improves conversion by keeping the primary CTA visible throughout the user journey.
 
 ## Business Requirement
-Add visual product demonstration section to help potential customers understand the value proposition quickly through video content.
+Increase waitlist signups by providing persistent, easy access to the conversion point regardless of scroll position.
 
 ## Business Goal
-Increase conversion by providing visual product walkthrough that demonstrates ease of use and enterprise capabilities.
+Improve conversion rate by reducing friction for users who want to join the waitlist after viewing the content.
 
 ## In-Scope
-- Video demo section with placeholder thumbnail
-- Play button overlay that triggers video modal
-- Video modal with close button
-- Responsive: full-width on mobile, centered on desktop
-- Section placed between Hero and TrustBadges (high visibility)
-- Dark-themed section to make video pop
+- Floating button appears after scrolling 500px
+- Smooth fade-in animation
+- Positioned bottom-right corner
+- Waitlist link (#waitlist anchor)
+- Respects user's theme preference (dark/light)
+- Hidden on mobile to avoid interfering with navigation
 
 ## Out-of-Scope
-- Actual video file (placeholder only)
-- Video hosting/streaming
-- Autoplay functionality
+- Multiple CTA options
+- Animated floating motion
+- Different button variants
 
 ## Technical Details
-- Client component ("use client") for modal state
-- useState for modal open/close
-- Fixed position modal with backdrop blur
-- Inline SVG play button and close icons
-- Tailwind for styling
-- Responsive padding and sizing
+- Client component ("use client") for scroll detection
+- useState for visibility state
+- useEffect with scroll event listener
+- CSS transition for smooth fade in/out
+- Fixed position with z-index
+- Inline SVG icon for visual appeal
 
 ## Implementation Plan
-1. Create VideoDemo component in /src/components/VideoDemo.tsx
-2. Add to page.tsx between Hero and TrustBadges
-3. Test play button opens modal
-4. Test close button/click outside closes modal
-5. Run lint, type-check, build
-6. E2E browser test
+1. Create FloatingCTA component in /src/components/FloatingCTA.tsx
+2. Add to page.tsx at the end of the page (before CookieConsent)
+3. Test visibility toggles on scroll
+4. Run lint, type-check, build
+5. E2E browser test
 
 ## Acceptance Criteria
-- [ ] Section has heading "See QwenResell in Action"
-- [ ] Video thumbnail placeholder with play button overlay
-- [ ] Clicking play opens modal
-- [ ] Modal has close button
-- [ ] Clicking backdrop closes modal
-- [ ] Escape key closes modal
-- [ ] Responsive design works on mobile/desktop
+- [ ] Button hidden initially (scrollY < 500)
+- [ ] Button appears after scrolling 500px
+- [ ] Smooth fade transition
+- [ ] Button links to #waitlist
+- [ ] Matches theme (dark/light)
+- [ ] Hidden on mobile (CSS media query)
 - [ ] Lint passes
 - [ ] Type-check passes
 - [ ] Build passes
-- [ ] Browser test confirms section renders
+- [ ] Browser test confirms visibility toggle
