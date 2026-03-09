@@ -33,6 +33,7 @@
 - ✅ Cookie consent banner with preferences modal
 - ✅ Customer logo ticker (animated scrolling logos)
 - ✅ Video demo section with modal
+- ✅ Floating CTA button (scroll-triggered waitlist button)
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -115,6 +116,13 @@ Document:
 - Cleanup removes scroll listener on unmount
 - All quality checks pass (lint, type-check, build)
 - Browser test confirmed progress bar renders and updates on scroll
+
+## Lessons Learned (March 9, 2026)
+- Fixed build error: Next.js static export (output:export) requires API routes to be static
+- Changed pricing API from dynamic to force-static for Cloudflare Pages compatibility
+- Added force-static to analytics API route to fix build failure
+- Both routes need explicit static export when using output:export in Next.js
+- Build now passes: npm run build completes successfully
 - Back to Top button improves UX on long landing pages
 - useState tracks visibility (scrollY > 200), useEffect adds scroll listener
 - CSS transition on opacity/transform for smooth fade in/out
