@@ -50,13 +50,17 @@ export default function Testimonials() {
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.id}
-            className="p-8 rounded-2xl border backdrop-blur-xl hover:border-blue-500/30 transition-colors"
-            style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}
+            className="p-8 rounded-2xl border backdrop-blur-xl transition-colors"
+            style={{ 
+              backgroundColor: 'var(--card-bg)', 
+              borderColor: 'var(--border-color)',
+              boxShadow: '0 4px 20px var(--shadow-color)'
+            }}
           >
-            <div className="text-4xl mb-4" style={{ color: 'var(--accent-blue)' }}>&ldquo;</div>
+            <div className="text-4xl mb-4" style={{ color: 'var(--accent-purple)' }}>&ldquo;</div>
             <p className="mb-6 leading-relaxed" style={{ color: 'var(--text-primary)' }}>{testimonial.quote}</p>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{ background: 'linear-gradient(135deg, var(--accent-purple), var(--accent-blue))' }}>
                 {testimonial.name.charAt(0)}
               </div>
               <div>

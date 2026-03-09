@@ -48,14 +48,14 @@ export default function TrustBadges() {
   ];
 
   const colorClasses: Record<string, { bgVar: string; textVar: string }> = {
-    blue: { bgVar: "var(--accent-blue-bg)", textVar: "var(--accent-blue)" },
+    blue: { bgVar: "var(--accent-purple-bg)", textVar: "var(--accent-purple)" },
     green: { bgVar: "var(--accent-green-bg)", textVar: "var(--accent-green)" },
     purple: { bgVar: "var(--accent-purple-bg)", textVar: "var(--accent-purple)" },
     orange: { bgVar: "var(--accent-orange-bg)", textVar: "var(--accent-orange)" }
   };
 
   return (
-    <section className="py-16" style={{ backgroundColor: 'rgba(30, 30, 30, 0.2)' }}>
+    <section className="py-16" style={{ background: 'var(--bg-secondary)' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Enterprise-Grade Security</h2>

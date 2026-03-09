@@ -53,12 +53,12 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+    <section id="faq" className="py-24" style={{ background: 'var(--bg-secondary)' }}>
       <div className="container mx-auto px-6 max-w-3xl">
         <h2 className="text-3xl font-bold mb-4 text-center">Frequently Asked Questions</h2>
         <p className="text-center mb-12 max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
           Can&apos;t find the answer you&apos;re looking for?{" "}
-          <a href="#waitlist" style={{ color: 'var(--accent-blue)' }}>
+          <a href="#waitlist" style={{ color: 'var(--accent-purple)' }}>
             Contact us
           </a>.
         </p>
@@ -83,7 +83,7 @@ export default function FAQ() {
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      style={{ color: 'var(--text-secondary)' }}
+                      style={{ color: 'var(--accent-purple)' }}
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>

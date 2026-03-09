@@ -153,7 +153,7 @@ export default function ContactForm() {
 
   return (
     <section id="waitlist" className="container mx-auto px-6 py-32 text-center">
-      <div className="max-w-3xl mx-auto p-8 md:p-12 rounded-[2rem] border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--accent-blue)', borderWidth: '1px' }}>
+      <div className="max-w-3xl mx-auto p-8 md:p-12 rounded-[2rem] border backdrop-blur-xl" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--accent-purple)', borderWidth: '1px' }}>
         {isSuccess ? (
           <div className="py-12">
             <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'var(--accent-green-bg)' }}>
@@ -253,7 +253,7 @@ export default function ContactForm() {
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full px-10 py-4 rounded-xl font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                style={{ backgroundColor: 'var(--text-primary)', color: 'var(--bg-primary)' }}
+                style={{ backgroundColor: 'var(--accent-purple)', color: 'white' }}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>

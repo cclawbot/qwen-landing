@@ -28,11 +28,11 @@ export default function Team() {
   ];
 
   return (
-    <section id="team" className="py-24" style={{ backgroundColor: 'rgba(30, 30, 30, 0.3)' }}>
+    <section id="team" className="py-24" style={{ background: 'var(--bg-secondary)' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
-            Meet the <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Team</span>
+            Meet the <span className="bg-gradient-to-r from-purple-500 to-purple-700 bg-clip-text text-transparent">Team</span>
           </h2>
           <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
             Experienced builders and AI infrastructure experts dedicated to your success
@@ -44,15 +44,19 @@ export default function Team() {
             <div
               key={index}
               className="p-6 rounded-3xl border backdrop-blur-xl text-center transition-transform hover:scale-105"
-              style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}
+              style={{ 
+                backgroundColor: 'var(--card-bg)', 
+                borderColor: 'var(--border-color)',
+                boxShadow: '0 4px 20px var(--shadow-color)'
+              }}
             >
               {/* Avatar */}
               <div
                 className="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white"
                 style={{
                   background: member.isAdvisor
-                    ? 'linear-gradient(135deg, #9333ea, #6366f1)'
-                    : 'linear-gradient(135deg, #2563eb, #06b6d4)',
+                    ? 'linear-gradient(135deg, var(--accent-purple), var(--accent-blue))'
+                    : 'linear-gradient(135deg, var(--accent-purple), var(--accent-blue))',
                 }}
               >
                 {member.name.split(' ').map(n => n[0]).join('')}
@@ -64,7 +68,7 @@ export default function Team() {
               {/* Role */}
               <p
                 className="text-sm font-medium mb-2"
-                style={{ color: member.isAdvisor ? '#a78bfa' : '#60a5fa' }}
+                style={{ color: 'var(--accent-purple)' }}
               >
                 {member.role}
               </p>

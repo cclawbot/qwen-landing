@@ -1,52 +1,65 @@
-# SPEC.md - Case Studies Section
+# SPEC.md - Interactive ROI Calculator
 
 ## Feature Name
-Case Studies Section - Detailed Customer Success Stories
+Interactive ROI Calculator - Business Value Metrics
 
 ## Business Requirement
-Add a case studies section to provide detailed customer success stories with quantifiable results. This adds deeper social proof than testimonials by showing specific metrics, use cases, and business outcomes.
+Add a comprehensive ROI (Return on Investment) calculator that helps enterprise prospects understand the full business value of switching to QwenResell. Unlike the pricing calculator (which shows token cost savings), this calculator shows broader metrics including payback period, productivity gains, and total 3-year value.
 
 ## Business Goal Alignment
-- **Trust**: Detailed success stories with real metrics build credibility
-- **Conversion**: Case studies help prospects visualize ROI
-- **SEO**: Long-form content improves search engine visibility
+- **Conversion**: Help prospects visualize ROI to justify switch to decision-makers
+- **Trust**: Quantifiable business metrics build credibility
+- **Differentiation**: Stand out from competitors by showing comprehensive value
 
 ## In-Scope
-- Case studies section with 3 detailed customer success stories
-- Each case study: company name, industry, challenge, solution, results (with metrics)
-- Metrics displayed prominently (cost savings %, time saved, etc.)
-- Responsive grid layout (1/2/3 columns)
-- Placed between Team and Testimonials sections
+- ROI calculator with multiple input fields
+- Metrics calculated:
+  - Payback period (months to recover investment)
+  - Total 3-year savings
+  - Annual productivity hours saved
+  - Efficiency improvement percentage
+  - Break-even analysis
+- Interactive sliders + number inputs for user input
+- Results displayed prominently with visualizations
+- Responsive layout (mobile + desktop)
 - Dark/light mode compatible
-- Static content (no API calls)
+- Client-side component with useMemo for calculations
+- Placed between PricingCalculator and Features section
 
 ## Out-of-Scope
-- Interactive case study filters
-- Video case studies
-- Customer photos/headshots
-- Dynamic case study API
-- Full blog-style case study pages
+- API integration for real-time pricing
+- PDF export of results
+- Email results to sales
+- Comparison with specific competitors (beyond pricing)
 
 ## Technical Details
-- Static component (no "use client" needed)
-- Inline SVG icons for metrics
-- Responsive: 1 col mobile, 2 cols tablet, 3 cols desktop
+- "use client" directive for interactivity
+- useMemo for calculation performance
+- Input validation with sensible defaults
+- Formatted currency/number display
 - Uses existing color scheme and card styling
-- Hover effects on cards for interactivity
+- Responsive grid: stacked on mobile, side-by-side on desktop
 
 ## Implementation Plan
-1. Create CaseStudies component in src/components/CaseStudies.tsx
-2. Add 3 case studies with company, industry, challenge, solution, results
-3. Import and add to page.tsx between Team and Testimonials
-4. Run lint, type-check, build
-5. E2E browser test
-6. Commit and push
+1. Create ROICalculator component in src/components/ROICalculator.tsx
+2. Add input fields: current monthly spend, number of developers, current tool costs, implementation cost
+3. Calculate and display: payback period, 3-year savings, productivity gains, efficiency %
+4. Import and add to page.tsx between PricingCalculator and Features
+5. Run lint, type-check, build
+6. E2E browser test
+7. Commit and push
 
 ## Visual Design
-- Section title: "Success Stories"
-- Subtitle: "See how enterprises are saving with QwenResell"
-- Cards with: Company name, industry tag, challenge summary, solution summary, key metrics
-- Metrics shown as large numbers with labels (e.g., "92%", "$2.4M saved")
-- Industry tags use color coding
-- Background: slightly different from page background for emphasis
-- Hover: subtle scale and shadow increase
+- Section title: "Calculate Your ROI"
+- Subtitle: "See the full business value of switching to QwenResell"
+- Input cards on left, results dashboard on right
+- Large metric numbers with labels
+- Color-coded metrics (green for positive, purple for highlights)
+- Animated counter effect on results
+- "Contact Sales" CTA below results
+
+## Assumptions
+- Default implementation cost: $5,000 (one-time)
+- Productivity value: $75/hour (senior developer rate)
+- Efficiency gain: 30% (conservative estimate based on Qwen capabilities)
+- Annual cost increase for competitors: 15%

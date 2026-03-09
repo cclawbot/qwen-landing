@@ -85,24 +85,30 @@ export default function PricingCalculator() {
         <h2 className="text-3xl font-bold mb-4 text-center">
           Calculate Your Savings
         </h2>
-        <p className="text-gray-400 text-center mb-12">
+        <p className="text-center mb-12" style={{ color: 'var(--text-secondary)' }}>
           See how much you can save by switching to Qwen API
         </p>
 
-        <div className="bg-[rgba(17,24,39,0.7)] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.1)] backdrop-blur-xl p-8">
+        <div className="rounded-2xl overflow-hidden border backdrop-blur-xl p-8" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">
+                <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
                   Currently Using
                 </label>
                 <select
                   value={selectedModel}
                   onChange={(e) => setSelectedModel(e.target.value)}
-                  className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all text-white"
+                  className="w-full rounded-xl px-4 py-3 focus:outline-none transition-all"
+                  style={{ 
+                    backgroundColor: 'var(--input-bg)', 
+                    borderColor: 'var(--input-border)',
+                    color: 'var(--text-primary)',
+                    border: '1px solid var(--input-border)'
+                  }}
                 >
                   {competitorOptions.map((model) => (
-                    <option key={model.name} value={model.name}>
+                    <option key={model.name} value={model.name} style={{ backgroundColor: 'var(--input-bg)' }}>
                       {model.name}
                     </option>
                   ))}
@@ -111,7 +117,7 @@ export default function PricingCalculator() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-2">
+                  <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
                     Monthly Input Tokens (Millions)
                   </label>
                   <input
@@ -120,12 +126,18 @@ export default function PricingCalculator() {
                     step="0.1"
                     value={inputTokens}
                     onChange={(e) => setInputTokens(e.target.value)}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all text-white"
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none transition-all"
+                    style={{ 
+                      backgroundColor: 'var(--input-bg)', 
+                      borderColor: 'var(--input-border)',
+                      color: 'var(--text-primary)',
+                      border: '1px solid var(--input-border)'
+                    }}
                     placeholder="0"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-2">
+                  <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
                     Monthly Output Tokens (Millions)
                   </label>
                   <input
@@ -134,32 +146,38 @@ export default function PricingCalculator() {
                     step="0.1"
                     value={outputTokens}
                     onChange={(e) => setOutputTokens(e.target.value)}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-all text-white"
+                    className="w-full rounded-xl px-4 py-3 focus:outline-none transition-all"
+                    style={{ 
+                      backgroundColor: 'var(--input-bg)', 
+                      borderColor: 'var(--input-border)',
+                      color: 'var(--text-primary)',
+                      border: '1px solid var(--input-border)'
+                    }}
                     placeholder="0"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-900/50 rounded-xl p-6 flex flex-col justify-center">
+            <div className="rounded-xl p-6 flex flex-col justify-center" style={{ backgroundColor: 'var(--accent-purple-bg)' }}>
               <div className="text-center">
-                <p className="text-sm text-gray-400 mb-2">Your Savings</p>
-                <p className="text-4xl font-bold text-green-400 mb-2">
+                <p className="text-sm mb-2" style={{ color: 'var(--text-secondary)' }}>Your Savings</p>
+                <p className="text-4xl font-bold mb-2" style={{ color: 'var(--accent-purple)' }}>
                   {formatCurrency(calculations.savings)}
                 </p>
-                <div className="inline-block bg-[#064e3b] text-[#34d399] text-sm font-medium px-3 py-1 rounded-full">
+                <div className="inline-block text-sm font-medium px-3 py-1 rounded-full" style={{ backgroundColor: 'var(--accent-purple-bg)', color: 'var(--accent-purple)' }}>
                   {calculations.savingsPercent.toFixed(1)}% savings
                 </div>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-gray-700 space-y-2">
+              <div className="mt-6 pt-6 border-t space-y-2" style={{ borderColor: 'var(--border-color)' }}>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">Current Cost:</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>Current Cost:</span>
                   <span>{formatCurrency(calculations.currentCost)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">With Qwen:</span>
-                  <span className="text-blue-400">
+                  <span style={{ color: 'var(--text-secondary)' }}>With Qwen:</span>
+                  <span style={{ color: 'var(--accent-purple)' }}>
                     {formatCurrency(calculations.qwenCost)}
                   </span>
                 </div>
@@ -167,13 +185,14 @@ export default function PricingCalculator() {
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-gray-800 text-center">
-            <p className="text-sm text-gray-400 mb-4">
+          <div className="mt-8 pt-6 border-t text-center" style={{ borderColor: 'var(--border-color)' }}>
+            <p className="mb-4" style={{ color: 'var(--text-secondary)' }}>
               Ready to start saving? Join the priority waitlist.
             </p>
             <a
               href="#waitlist"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition-all"
+              className="inline-block px-6 py-3 rounded-xl font-bold transition-all"
+              style={{ backgroundColor: 'var(--accent-purple)', color: 'white' }}
             >
               Join Waitlist
             </a>

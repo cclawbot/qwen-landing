@@ -7,7 +7,6 @@ export default function CaseStudies() {
     {
       company: "DataFlow AI",
       industry: "Enterprise SaaS",
-      industryColor: "bg-blue-900/30 text-blue-400",
       challenge: "Scaling NLP pipelines for 50M+ daily requests while managing costs",
       solution: "Migrated from GPT-4 to Qwen 0728 via QwenResell for non-thinking tasks",
       metrics: [
@@ -18,7 +17,6 @@ export default function CaseStudies() {
     {
       company: "TechCorp Global",
       industry: "Financial Services",
-      industryColor: "bg-green-900/30 text-green-400",
       challenge: "Compliance requirements demanded data residency and audit trails",
       solution: "Deployed QwenResell with EU data residency and full audit logging",
       metrics: [
@@ -29,7 +27,6 @@ export default function CaseStudies() {
     {
       company: "ScaleUp Labs",
       industry: "Healthcare Tech",
-      industryColor: "bg-purple-900/30 text-purple-400",
       challenge: "Needed reliable API for patient communication automation",
       solution: "Implemented QwenResell with enterprise SLA and 99.99% uptime guarantee",
       metrics: [
@@ -40,7 +37,7 @@ export default function CaseStudies() {
   ];
 
   return (
-    <section className="py-24" style={{ backgroundColor: 'var(--bg-primary)' }}>
+    <section className="py-24" style={{ background: 'var(--bg-secondary)' }}>
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -55,16 +52,17 @@ export default function CaseStudies() {
           {caseStudies.map((study, index) => (
             <div
               key={index}
-              className="p-8 rounded-3xl border backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+              className="p-8 rounded-3xl border backdrop-blur-xl transition-all duration-300 hover:scale-[1.02]"
               style={{
                 backgroundColor: 'var(--card-bg)',
                 borderColor: 'var(--border-color)',
+                boxShadow: '0 4px 20px var(--shadow-color)'
               }}
             >
               {/* Company Name & Industry */}
               <div className="mb-6">
                 <h3 className="text-2xl font-bold mb-2">{study.company}</h3>
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${study.industryColor}`}>
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: 'var(--accent-purple-bg)', color: 'var(--accent-purple)' }}>
                   {study.industry}
                 </span>
               </div>
@@ -93,7 +91,7 @@ export default function CaseStudies() {
               <div className="grid grid-cols-2 gap-4 pt-4 border-t" style={{ borderColor: 'var(--border-color)' }}>
                 {study.metrics.map((metric, mIndex) => (
                   <div key={mIndex} className="text-center">
-                    <div className="text-2xl font-bold text-blue-400">{metric.value}</div>
+                    <div className="text-2xl font-bold" style={{ color: 'var(--accent-purple)' }}>{metric.value}</div>
                     <div className="text-xs" style={{ color: 'var(--text-secondary)' }}>{metric.label}</div>
                   </div>
                 ))}
