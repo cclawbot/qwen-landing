@@ -31,6 +31,7 @@
 - ✅ Enhanced footer with social links & navigation
 - ✅ Scroll progress indicator
 - ✅ Cookie consent banner with preferences modal
+- ✅ Customer logo ticker (animated scrolling logos)
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
@@ -280,3 +281,12 @@ Document:
 - Responsive grid: 2 cols mobile, 3 tablet, 4 desktop
 - hover:scale-[1.02] provides subtle interactive feedback
 - Static component (no "use client" needed) - server-rendered
+
+- Customer logo ticker adds animated scrolling logos for social proof
+- 10 placeholder companies with color-coded initials (different colors per company)
+- Infinite scroll animation using CSS @keyframes translateX
+- Pause on hover using animation-play-state: paused
+- "use client" directive needed for onMouseEnter/onMouseLeave hover state
+- Section placed between TrustBadges and StatsSection for good flow
+- Responsive: fewer logos visible on smaller screens via container overflow
+- Two identical logo rows offset to create seamless infinite loop effect
