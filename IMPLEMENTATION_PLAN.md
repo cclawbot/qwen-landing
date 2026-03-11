@@ -81,10 +81,18 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 2.5: Create Get Current User Endpoint
 - **Name**: GET /api/auth/me
 - **Description**: Return current authenticated user profile
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 2.4
 - **Blocks**: Phase 3
 - **Tests**: Integration test with valid/invalid token
+
+### Task 2.6: Create Logout Endpoint
+- **Name**: POST /api/auth/logout
+- **Description**: Clear auth cookies and invalidate session
+- **Status**: ✅ COMPLETED
+- **Blocked by**: 2.4
+- **Blocks**: None
+- **Tests**: Integration test clears cookies
 
 ---
 

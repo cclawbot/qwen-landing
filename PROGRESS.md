@@ -39,6 +39,7 @@
 - ✅ Database setup with Drizzle ORM + SQLite
 - ✅ User registration endpoint (POST /api/auth/register)
 - ✅ User login endpoint (POST /api/auth/login) 
+- ✅ User logout endpoint (POST /api/auth/logout)
 - ✅ Get current user endpoint (GET /api/auth/me)
 - ✅ JWT token-based authentication
 - ✅ Password hashing with bcrypt

@@ -196,11 +196,11 @@ CREATE INDEX idx_usage_logs_timestamp ON usage_logs(timestamp);
 - [ ] Set up database connection singleton
 
 ### Phase 2: Authentication
-- [ ] Implement user registration with validation
-- [ ] Implement password hashing with bcrypt
-- [ ] Implement JWT token generation/validation
-- [ ] Implement login/logout endpoints
-- [ ] Create auth middleware for protected routes
+- [x] Implement user registration with validation
+- [x] Implement password hashing with bcrypt
+- [x] Implement JWT token generation/validation
+- [x] Implement login/logout endpoints
+- [x] Create auth middleware for protected routes
 
 ### Phase 3: Waitlist System
 - [ ] Implement waitlist submission
