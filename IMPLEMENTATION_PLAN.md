@@ -115,7 +115,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 4.1: Create API Key Generation Utility
 - **Name**: Secure random key generator
 - **Description**: Create utility to generate secure random key_id and key_secret
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 2.4
 - **Blocks**: 4.2
 - **Tests**: Unit tests verify key format and uniqueness
@@ -123,7 +123,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 4.2: Create List API Keys Endpoint
 - **Name**: GET /api/keys
 - **Description**: List all API keys for authenticated user (without secrets)
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 4.1
 - **Blocks**: 4.3
 - **Tests**: Integration test returns keys without secrets
@@ -131,7 +131,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 4.3: Create Create API Key Endpoint
 - **Name**: POST /api/keys
 - **Description**: Generate new API key, hash secret, store in database, return secret once
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 4.2
 - **Blocks**: 4.4
 - **Tests**:
@@ -140,7 +140,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 4.4: Create Revoke API Key Endpoint
 - **Name**: DELETE /api/keys/:id
 - **Description**: Mark API key as revoked (soft delete)
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 4.3
 - **Blocks**: Phase 5
 - **Tests**: Integration test key revoked successfully
@@ -152,7 +152,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 5.1: Create Usage Logging Endpoint
 - **Name**: POST /api/usage/log
 - **Description**: Log API usage (called internally by proxy)
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 4.4
 - **Blocks**: 5.2
 - **Tests**: Unit tests for logging function
@@ -160,7 +160,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 5.2: Create Usage Aggregation Queries
 - **Name**: Usage statistics queries
 - **Description**: Create Drizzle queries for daily/model usage aggregation
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 5.1
 - **Blocks**: 5.3
 - **Tests**: Unit tests verify aggregation correctness
@@ -168,7 +168,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 5.3: Create Usage Dashboard Endpoints
 - **Name**: GET /api/usage, GET /api/usage/daily, GET /api/usage/models
 - **Description**: Return usage statistics for dashboard
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 5.2
 - **Blocks**: Phase 6
 - **Tests**: Integration tests return correct data
@@ -180,7 +180,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 6.1: Create API Key Validation Middleware
 - **Name**: Validate X-API-Key header
 - **Description**: Middleware to validate API key from request header
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 5.3
 - **Blocks**: 6.2
 - **Tests**: Unit tests for key validation
@@ -188,7 +188,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 6.2: Create Qwen Proxy Endpoint
 - **Name**: POST /api/proxy/qwen
 - **Description**: Proxy endpoint that validates key, logs usage, forwards to Qwen API
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 6.1
 - **Blocks**: 6.3
 - **Tests**:
@@ -197,7 +197,7 @@ This implementation plan breaks down the backend system into small, focused task
 ### Task 6.3: Add Error Handling and Retries
 - **Name**: Robust error handling
 - **Description**: Add retry logic, proper error responses, upstream failure handling
-- **Status**: PENDING
+- **Status**: ✅ COMPLETED
 - **Blocked by**: 6.2
 - **Blocks**: Phase 7 (Complete)
 - **Tests**: Integration tests for error scenarios

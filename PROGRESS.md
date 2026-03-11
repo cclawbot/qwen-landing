@@ -44,6 +44,9 @@
 - ✅ Password hashing with bcrypt
 - ✅ Waitlist submission (POST /api/waitlist)
 - ✅ Waitlist admin management (GET/PATCH /api/waitlist)
+- ✅ API Key Management (generate, list, create, revoke)
+- ✅ Usage Tracking (log, aggregate, dashboard endpoints)
+- ✅ Qwen API Proxy (validated key, forwards to Qwen API)
 
 ## Lessons Learned (March 11, 2026)
 - Next.js API routes work with dynamic output (not static export)
@@ -55,6 +58,10 @@
 - Route structure: /api/resource/route.ts for list, /api/resource/[id]/route.ts for item
 - Admin endpoints use custom header (x-admin-key) for simplicity
 - All quality checks pass: lint (warnings only), type-check, build
+- API key format: qk_{keyId}_{keySecret} - public ID + secret
+- Drizzle isNull() required for nullable column comparisons (not eq(x, null))
+- Use desc() from drizzle-orm for ORDER BY descending
+- Proxy endpoints need to validate both keyId and keySecret (hashed)
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
