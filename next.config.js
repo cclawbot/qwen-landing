@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // Note: API routes require server runtime
+  // For static export deployment (Cloudflare Pages), API routes need to be deployed separately
+  // or use Next.js on Vercel for full API support
   basePath: '/qwen-landing',
   assetPrefix: '/qwen-landing/',
-  trailingSlash: true,
-  images: {
-    unoptimized: true,
-  },
 };
 
 module.exports = nextConfig;

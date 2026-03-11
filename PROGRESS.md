@@ -35,6 +35,14 @@
 - ✅ Video demo section with modal
 - ✅ Floating CTA button (scroll-triggered waitlist button)
 
+## Backend System (New - March 2026)
+- ✅ Database setup with Drizzle ORM + SQLite
+- ✅ User registration endpoint (POST /api/auth/register)
+- ✅ User login endpoint (POST /api/auth/login) 
+- ✅ Get current user endpoint (GET /api/auth/me)
+- ✅ JWT token-based authentication
+- ✅ Password hashing with bcrypt
+
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
 - **CI/CD**: GitHub Actions (2000 mins/month free for private, unlimited for public)
