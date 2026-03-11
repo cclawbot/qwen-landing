@@ -42,6 +42,19 @@
 - ✅ Get current user endpoint (GET /api/auth/me)
 - ✅ JWT token-based authentication
 - ✅ Password hashing with bcrypt
+- ✅ Waitlist submission (POST /api/waitlist)
+- ✅ Waitlist admin management (GET/PATCH /api/waitlist)
+
+## Lessons Learned (March 11, 2026)
+- Next.js API routes work with dynamic output (not static export)
+- JWT tokens more reliable in response body than cookies for API auth
+- Bearer token format: Authorization: Bearer <token>
+- SQLite with better-sqlite3 works well for local dev
+- Drizzle ORM provides type-safe database queries
+- bcrypt with 12 rounds provides good security
+- Route structure: /api/resource/route.ts for list, /api/resource/[id]/route.ts for item
+- Admin endpoints use custom header (x-admin-key) for simplicity
+- All quality checks pass: lint (warnings only), type-check, build
 
 ## Infrastructure (Free, No Credit Card)
 - **Hosting**: Cloudflare Pages (free, no bandwidth fees)
