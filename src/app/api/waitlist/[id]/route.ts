@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { waitlist } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { validateRequest, waitlistUpdateSchema } from '@/lib/validation';
 
 // PATCH - Update waitlist entry status (approve/deny)
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
@@ -18,14 +19,17 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
     }
     
     const body = await request.json();
-    const { status } = body;
     
-    if (!['approved', 'denied'].includes(status)) {
+    // Validate request body
+    const validation = validateRequest(waitlistUpdateSchema, body);
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'Invalid status. Must be "approved" or "denied"' },
+        { error: validation.error },
         { status: 400 }
       );
     }
+    
+    const { status } = validation.data;
     
     // Update the entry
     await db.update(waitlist)

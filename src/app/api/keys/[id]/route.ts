@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserId } from '@/lib/auth/middleware';
 import { revokeApiKey, getApiKeyByKeyId } from '@/lib/db/api-keys';
+import { apiKeyIdSchema, validateRequest } from '@/lib/validation';
 
 export async function DELETE(
   request: NextRequest,
@@ -16,6 +17,15 @@ export async function DELETE(
     }
 
     const { id: keyId } = await params;
+
+    // Validate the key ID format
+    const validation = validateRequest(apiKeyIdSchema, { id: keyId });
+    if (!validation.success) {
+      return NextResponse.json(
+        { error: validation.error },
+        { status: 400 }
+      );
+    }
 
     // First check if the key exists and belongs to the user
     const existingKey = await getApiKeyByKeyId(keyId);

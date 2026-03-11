@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { validateApiKey } from '@/lib/db/api-keys';
 import { logUsage } from '@/lib/db/usage';
 import { parseApiKeyHeader } from '@/lib/api-keys';
+import { validateRequest, proxyRequestSchema } from '@/lib/validation';
 
 // Qwen API configuration
 const QWEN_API_BASE = process.env.QWEN_API_BASE || 'https://dashscope.aliyuncs.com/api/v1';
@@ -50,6 +51,15 @@ export async function POST(request: NextRequest) {
 
     // Get the request body
     const body = await request.json();
+    
+    // Validate request body
+    const bodyValidation = validateRequest(proxyRequestSchema, body);
+    if (!bodyValidation.success) {
+      return NextResponse.json(
+        { error: bodyValidation.error },
+        { status: 400 }
+      );
+    }
     
     // Extract model from request (support both formats)
     const model = body.model || body.model_name || 'qwen-max';

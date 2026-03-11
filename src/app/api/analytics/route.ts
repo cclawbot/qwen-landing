@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z, ZodIssue } from 'zod';
 
 export const dynamic = 'force-static';
+
+// Analytics event schema
+const analyticsEventSchema = z.object({
+  type: z.string().min(1, 'Event type is required'),
+  path: z.string().optional(),
+  questionId: z.string().optional(),
+  to: z.string().optional(),
+  timestamp: z.string().datetime('Invalid timestamp format'),
+});
 
 // In-memory storage for analytics events
 // Note: This resets on server restart (perfect for serverless/edge)
@@ -39,9 +49,12 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate event structure
-    if (!body.type || !body.timestamp) {
+    const validation = analyticsEventSchema.safeParse(body);
+    if (!validation.success) {
+      const issues = validation.error.issues;
+      const errors = issues.map((e: z.ZodIssue) => `${e.path.join('.')}: ${e.message}`).join(', ');
       return NextResponse.json(
-        { error: 'Invalid event: type and timestamp required' },
+        { error: `Invalid event: ${errors}` },
         { status: 400 }
       );
     }

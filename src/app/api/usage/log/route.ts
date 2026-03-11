@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { validateApiKey } from '@/lib/db/api-keys';
 import { logUsage } from '@/lib/db/usage';
 import { parseApiKeyHeader } from '@/lib/api-keys';
+import { validateRequest, logUsageSchema } from '@/lib/validation';
 
 // POST /api/usage/log - Log API usage (internal, called by proxy)
 export async function POST(request: NextRequest) {
@@ -36,17 +37,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Parse usage data
+    // Parse and validate usage data
     const body = await request.json();
-    const { model, inputTokens, outputTokens, latencyMs } = body;
-
-    // Validate required fields
-    if (!model || typeof inputTokens !== 'number' || typeof outputTokens !== 'number') {
+    const validationResult = validateRequest(logUsageSchema, body);
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'Missing required fields: model, inputTokens, outputTokens' },
+        { error: validationResult.error },
         { status: 400 }
       );
     }
+
+    const { model, tokens, latency } = validationResult.data;
+    const inputTokens = body.inputTokens || tokens || 0;
+    const outputTokens = body.outputTokens || 0;
+    const latencyMs = latency || body.latencyMs;
 
     // Log the usage
     const log = await logUsage(

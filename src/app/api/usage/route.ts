@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserId } from '@/lib/auth/middleware';
 import { getUsageByUserId, getDailyUsage, getUsageByModel, getUsageSummary } from '@/lib/db/usage';
+import { validateRequest, usageQuerySchema } from '@/lib/validation';
 
 // GET /api/usage - Get usage statistics
 export async function GET(request: NextRequest) {
@@ -14,9 +15,23 @@ export async function GET(request: NextRequest) {
     }
 
     const { searchParams } = new URL(request.url);
+    const query = {
+      startDate: searchParams.get('startDate') || undefined,
+      endDate: searchParams.get('endDate') || undefined,
+      limit: searchParams.get('limit') || '100',
+    };
+
+    const queryValidation = validateRequest(usageQuerySchema, query);
+    if (!queryValidation.success) {
+      return NextResponse.json(
+        { error: queryValidation.error },
+        { status: 400 }
+      );
+    }
+
     const type = searchParams.get('type') || 'summary';
     const days = parseInt(searchParams.get('days') || '30', 10);
-    const limit = parseInt(searchParams.get('limit') || '100', 10);
+    const limit = queryValidation.data.limit;
 
     let data;
 

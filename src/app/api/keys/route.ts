@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getUserId } from '@/lib/auth/middleware';
 import { getApiKeysByUserId, createApiKey } from '@/lib/db/api-keys';
 import { generateApiKey, hashApiKeySecret, formatApiKey } from '@/lib/api-keys';
+import { createApiKeySchema, validateRequest } from '@/lib/validation';
 
 export async function GET(request: NextRequest) {
   try {
@@ -36,15 +37,15 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name } = body;
-
-    // Validate name if provided
-    if (name && (typeof name !== 'string' || name.length > 100)) {
+    const validation = validateRequest(createApiKeySchema, body);
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'Invalid name. Must be a string under 100 characters.' },
+        { error: validation.error },
         { status: 400 }
       );
     }
+
+    const { name } = validation.data;
 
     // Generate new API key
     const { keyId, keySecret } = generateApiKey();
