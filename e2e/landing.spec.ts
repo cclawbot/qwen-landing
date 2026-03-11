@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Landing Page', () => {
-  test('page loads without errors', async ({ page }) => {
+  test('page loads without errors', async ({ page, baseURL }) => {
+    console.log('Navigating to:', baseURL);
     const errors: string[] = [];
     page.on('console', msg => {
       if (msg.type() === 'error') {
