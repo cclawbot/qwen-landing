@@ -40,3 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 qwenresell.db*
+
+# test results
+/test-results/
+test-results/
+
+# progress files (use PROGRESS.md instead)
+progress.txt
+PROGRESS_SUMMARY.txt
